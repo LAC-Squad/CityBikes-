@@ -1,11 +1,6 @@
-$colorAccent: #99d5c8;
-$colorLight:  #f3f4e9;
-$colorDark: #474747;
-$boxShadowDark1: 8px 8px 0px $colorDark;
-$spacingSmall: 1.5rem;
-$spacingBig: 5rem;
+
 @import 'setup';
-@import 'styles/variables.scss';
+@import 'variables';
 
 @import url('https://fonts.googleapis.com/css?family=Montserrat|Roboto');
 

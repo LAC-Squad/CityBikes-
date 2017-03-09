@@ -11,28 +11,31 @@ citybikes.init = function(){
 	citybikes.getUserLocation();
 }
 
-citybikes.getUserLocation = function() {
-	$('#go').on('click', function(event){
+citybikes.getUserLocation = function(res) {
+	$('#searchForm').submit(function(event){
 		event.preventDefault();
-
-	citybikes.userInput = $('#getBike').val();
-	// var userInput = "Toronto";
-	let startDest = citybikes.results[0].geometry.location.lat;
-	console.log(citybikes.userInput);
-	citybikes.userLocation = $.ajax({
-		url: 'http://proxy.hackeryou.com',
-		method: 'GET',
-		dataType: 'json',
-		data: {
-			reqUrl: 'https://maps.googleapis.com/maps/api/geocode/json',
-			params: {
-				key: citybikes.googleMapsKey,
-				address: citybikes.userInput
+		//userInput = "Toronto";
+		citybikes.userInput = $('#getBike').val();
+		console.log(citybikes.userInput);
+		citybikes.userLocation = $.ajax({
+			url: 'http://proxy.hackeryou.com',
+			method: 'GET',
+			dataType: 'json',
+			data: {
+				reqUrl: 'https://maps.googleapis.com/maps/api/geocode/json',
+				params: {
+					key: citybikes.googleMapsKey,
+					address: citybikes.userInput
+				}
 			}
-		}
 		}).then(function(data){
 			// citybikes.getUserLocation(data);
 			console.log(data);
+			citybikes.bikeLat = data.results[0].geometry.location.lat;
+			citybikes.bikeLng = data.results[0].geometry.location.lng;
+			// console.log(data);
+			console.log(citybikes.bikeLat, citybikes.bikeLng);
+			citybikes.getBikeNetworks();
 		});
 	});	
 };
@@ -47,6 +50,7 @@ citybikes.getBikeNetworks = function(){
 	});
 	$.when(bikeNetworks).done(function(data){
 	console.log(data);
+	// data.filter()
 	})
 };
 

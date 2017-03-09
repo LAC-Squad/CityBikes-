@@ -12,24 +12,25 @@ citybikes.init = function(){
 }
 
 citybikes.getUserLocation = function(res) {
-	$('#go').on('click', function(event){
+	$('#searchForm').submit(function(event){
 		event.preventDefault();
 		//userInput = "Toronto";
 		citybikes.userInput = $('#getBike').val();
-	console.log(citybikes.userInput);
-	citybikes.userLocation = $.ajax({
-		url: 'http://proxy.hackeryou.com',
-		method: 'GET',
-		dataType: 'json',
-		data: {
-			reqUrl: 'https://maps.googleapis.com/maps/api/geocode/json',
-			params: {
-				key: citybikes.googleMapsKey,
-				address: citybikes.userInput
+		console.log(citybikes.userInput);
+		citybikes.userLocation = $.ajax({
+			url: 'http://proxy.hackeryou.com',
+			method: 'GET',
+			dataType: 'json',
+			data: {
+				reqUrl: 'https://maps.googleapis.com/maps/api/geocode/json',
+				params: {
+					key: citybikes.googleMapsKey,
+					address: citybikes.userInput
+				}
 			}
-		}
 		}).then(function(data){
 			// citybikes.getUserLocation(data);
+			console.log(data);
 			citybikes.bikeLat = data.results[0].geometry.location.lat;
 			citybikes.bikeLng = data.results[0].geometry.location.lng;
 			// console.log(data);
@@ -49,6 +50,7 @@ citybikes.getBikeNetworks = function(){
 	});
 	$.when(bikeNetworks).done(function(data){
 	console.log(data);
+	// data.filter()
 	})
 };
 

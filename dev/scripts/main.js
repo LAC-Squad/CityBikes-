@@ -11,13 +11,11 @@ citybikes.init = function(){
 	citybikes.getUserLocation();
 }
 
-citybikes.getUserLocation = function() {
+citybikes.getUserLocation = function(res) {
 	$('#go').on('click', function(event){
 		event.preventDefault();
-
-	citybikes.userInput = $('#getBike').val();
-	// var userInput = "Toronto";
-	let startDest = citybikes.results[0].geometry.location.lat;
+		//userInput = "Toronto";
+		citybikes.userInput = $('#getBike').val();
 	console.log(citybikes.userInput);
 	citybikes.userLocation = $.ajax({
 		url: 'http://proxy.hackeryou.com',
@@ -32,7 +30,11 @@ citybikes.getUserLocation = function() {
 		}
 		}).then(function(data){
 			// citybikes.getUserLocation(data);
-			console.log(data);
+			citybikes.bikeLat = data.results[0].geometry.location.lat;
+			citybikes.bikeLng = data.results[0].geometry.location.lng;
+			// console.log(data);
+			console.log(citybikes.bikeLat, citybikes.bikeLng);
+			citybikes.getBikeNetworks();
 		});
 	});	
 };

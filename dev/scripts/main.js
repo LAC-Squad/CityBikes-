@@ -2,10 +2,10 @@
 
 
 //generates today's date //
-var today = new Date();
-var dd = today.getDate();
-var mm = today.getMonth()+1; //January is 0!
-var yyyy = today.getFullYear();
+let today = new Date();
+let dd = today.getDate();
+let mm = today.getMonth()+1; //January is 0!
+let yyyy = today.getFullYear();
 
 if(dd<10) {
    dd='0'+dd
@@ -34,9 +34,10 @@ citybikes.getUserLocation = function(res) {
 	$('#searchForm').submit(function(event){
 		event.preventDefault();
 		//userInput = "Toronto";
-		citybikes.userInput = $('#getBike').val();
-		console.log(citybikes.userInput);
-		citybikes.userLocation = $.ajax({
+		citybikes.userInputBike = $('#getBike').val();
+		citybikes.userInputCafe = $('#getCafe').val();
+		console.log(citybikes.userInputBike, citybikes.userInputCafe);
+		citybikes.bikeLocation = $.ajax({
 			url: 'http://proxy.hackeryou.com',
 			method: 'GET',
 			dataType: 'json',
@@ -44,16 +45,35 @@ citybikes.getUserLocation = function(res) {
 				reqUrl: 'https://maps.googleapis.com/maps/api/geocode/json',
 				params: {
 					key: citybikes.googleMapsKey,
-					address: citybikes.userInput
+					address: citybikes.userInputBike
 				}
 			}
-		}).then(function(data){
-			// citybikes.getUserLocation(data);
-			console.log(data);
-			citybikes.bikeLat = data.results[0].geometry.location.lat;
-			citybikes.bikeLng = data.results[0].geometry.location.lng;
-			// console.log(data);
-			console.log(citybikes.bikeLat, citybikes.bikeLng);
+		})
+		citybikes.cafeLocation = $.ajax({
+			url: 'http://proxy.hackeryou.com',
+			method: 'GET',
+			dataType: 'json',
+			data: {
+				reqUrl: 'https://maps.googleapis.com/maps/api/geocode/json',
+				params: {
+					key: citybikes.googleMapsKey,
+					address: citybikes.userInputCafe
+				}
+			}
+		})
+
+		$.when(citybikes.bikeLocation,citybikes.cafeLocation)
+		.then(function(bikedata,cafedata){
+			// console.log("DATAS",bikedata, cafedata)
+			// Get Bikes
+			citybikes.bikeLat = bikedata[0].results[0].geometry.location.lat;
+			citybikes.bikeLng = bikedata[0].results[0].geometry.location.lng;
+			// Get Cafe
+			citybikes.cafeLat = cafedata[0].results[0].geometry.location.lat;
+			citybikes.cafeLng = cafedata[0].results[0].geometry.location.lng;
+			//map thing
+			initMap();
+			console.log("WORKS???",citybikes.bikeLat, citybikes.bikeLng,"|",citybikes.cafeLat, citybikes.cafeLng);
 			citybikes.getBikeNetworks();
 		});
 	});	
@@ -95,7 +115,14 @@ $.when(coffeeShops).done(function(res){
 console.log(res);
 })
 
-
+var map;
+function initMap() {
+	console.log('initmap');
+  map = new google.maps.Map(document.getElementById('map'), {
+    center: {lat: citybikes.bikeLat, lng: citybikes.bikeLng},
+    zoom: 18
+  });
+}
 
 
 

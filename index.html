@@ -18,8 +18,8 @@
 	<main class="wrapper">
 		<div id="actions">
 			<form class="inputContainer" id="searchForm">
-				<input type="text" id="getBike" placeholder="Find a bike!">
-				<input type="text" id="getCafe" placeholder="Find a café!">
+				<input type="text" id="getBike" placeholder="Find a bike!" required>
+				<input type="text" id="getCafe" placeholder="Find a café!" required>
 				<button type="submit" id="go" value="clicky">Go! Go! Go!</button>
 			</form>
 			<div class="submitContainer">
@@ -29,13 +29,7 @@
 		</div>
 		<section class="container">
 			<div class="results">
-		<!-- 	<img src="assets/bike copy.png"> -->
-			<!-- Map goes here -->
-			<iframe src="//www.google.com/maps/embed/v1/place?q=Harrods,Brompton%20Rd,%20UK
-			  &zoom=17
-			  &key=AIzaSyDBpoYMAT17_NRJDpYG74y0D7apsNliPlo" width="100%" height="500px">
-			</iframe> 
-		<!-- 	end map -->
+				<div id="map"></div>
 			</div>
 		</section>
 	</main>
@@ -43,7 +37,9 @@
 	<footer>
 		<p class="copyright">Made by Laura, Aaron and Chiara</p>
 	</footer>
-
+	<script src="http://maps.googleapis.com/maps/api/js?key=
+AIzaSyBwOl3ST9F6laG4JjX71DwUP1L2SZjcY3k&callback=initMap"
+	    async defer></script>
 	<script
 	  src="https://code.jquery.com/jquery-2.2.4.min.js"
 	  integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="

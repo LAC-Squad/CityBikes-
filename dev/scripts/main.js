@@ -1,26 +1,4 @@
 
-//Functions to randomize background pngs
- 	$(function(){
-
-	getRandomArray = function(array){
-		function randomNumber (n) {
-  		return Math.floor(Math.random() * n);
-  	};
-
-	function randomStyle(element){
-		var cssOne = randomNumber(100);
-		var cssTwo = randomNumber(100);
-		var styles = {left: cssOne + "%", top: cssTwo + "%"};
-		element.css(styles);
-	};
-
-	var divImageArray = $('.background > div.imgWrapper');
-
-divImageArray.each(function(){
-	randomStyle($(this));
-});
-
-}
 
 
 //generates today's date //

@@ -5,9 +5,8 @@
 	<meta charset="UTF-8">
 	<title>Cruisin' 🚲💨 </title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" href="dev/styles/main.css">	
+	<link rel="stylesheet" href="public/styles/style.css">	
 	<link href="https://fonts.googleapis.com/css?family=Montserrat|Roboto" rel="stylesheet">
-
 </head>
 <body>
 	<header>
@@ -28,16 +27,14 @@
 
 	<main class="wrapper">
 		<div id="actions">
-			<div class="buttonContainer">
-				<button id="getBike">Get Nearby Bikes</button>
-				<label for="getBike"></label>
-				<button id="getCafe" value="clicky">Get Destination Cafe</button>
-				<label for="getCafe"></label>
-				<button id="go" value="clicky">Go!</button>
-				<label for="go"></label>
-			</div>
-			<div class="searchContainer">
-				<input type="text" name="" id="">
+			<form class="inputContainer" id="searchForm">
+				<input type="text" id="getBike" placeholder="Find a bike!">
+				<input type="text" id="getCafe" placeholder="Find a Cafe!">
+				<button type="submit" id="go" value="clicky">Go! Go! Go!</button>
+			</form>
+			<div class="submitContainer">
+
+
 			</div>
 		</div>
 		<section class="container">

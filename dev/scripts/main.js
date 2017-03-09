@@ -44,9 +44,42 @@ let citybikes = {};
 // citybikes.client_secret = "HZKPB3D5EANIS5PHQK5ZYLRQFDVE04CQ5KBSUZTK5UCT3JH2";
 // citybikes.version = 20170307;
 // citybikes.url = "https://api.foursquare.com/v2/venues/explore"
+
+citybikes.googleMapsKey = "AIzaSyCrXerr7xHcFxr4OW7EmOdDnNBaHgLzXIQ";
+
 citybikes.init = function(){
 	citybikes.getBikeNetworks();
+	citybikes.getUserLocation();
 }
+
+citybikes.getUserLocation = function(res) {
+	$('#searchForm').submit(function(event){
+		event.preventDefault();
+		//userInput = "Toronto";
+		citybikes.userInput = $('#getBike').val();
+		console.log(citybikes.userInput);
+		citybikes.userLocation = $.ajax({
+			url: 'http://proxy.hackeryou.com',
+			method: 'GET',
+			dataType: 'json',
+			data: {
+				reqUrl: 'https://maps.googleapis.com/maps/api/geocode/json',
+				params: {
+					key: citybikes.googleMapsKey,
+					address: citybikes.userInput
+				}
+			}
+		}).then(function(data){
+			// citybikes.getUserLocation(data);
+			console.log(data);
+			citybikes.bikeLat = data.results[0].geometry.location.lat;
+			citybikes.bikeLng = data.results[0].geometry.location.lng;
+			// console.log(data);
+			console.log(citybikes.bikeLat, citybikes.bikeLng);
+			citybikes.getBikeNetworks();
+		});
+	});	
+};
 
 citybikes.getBikeNetworks = function(){
 	var bikeNetworks = $.ajax({
@@ -58,6 +91,7 @@ citybikes.getBikeNetworks = function(){
 	});
 	$.when(bikeNetworks).done(function(data){
 	console.log(data);
+	// data.filter()
 	})
 };
 
@@ -72,8 +106,6 @@ citybikes.getCoffeeShops = function (getCoffeeShops) {
 			client_id: 'HNQJUKZ0TNYSMRZ2N2CNAUZZFQFDJVIBBB0BZ3RG2XAJD43G',
 			client_secret: 'HZKPB3D5EANIS5PHQK5ZYLRQFDVE04CQ5KBSUZTK5UCT3JH2',
 			section: 'coffee'
-
-
 		}
 	});
 };

@@ -1,3 +1,9 @@
+$colorAccent: #99d5c8;
+$colorLight:  #f3f4e9;
+$colorDark: #474747;
+$boxShadowDark1: 8px 8px 0px $colorDark;
+$spacingSmall: 1.5rem;
+$spacingBig: 5rem;
 @import 'setup';
 
 @import url('https://fonts.googleapis.com/css?family=Montserrat|Roboto');
@@ -5,7 +11,7 @@
 body {
     margin: 0 auto; 
     font-family: 'Roboto', sans-serif; 
-    background-color: #f3f4e9;
+    background-color: $colorLight;
     color: #474747;
 }
 
@@ -16,16 +22,28 @@ body {
 }   
 
 h1, h2, h3 {
+	text-align:center;
 	font-family: 'Montserrat', sans-serif;
-	color: #99d5c8;
+	color: $colorAccent;
 } 
 
 h1 {
+	margin: 1rem 0 0.75rem 0;
+	font-size:3rem;
 	text-transform: uppercase;
 }
-
+h3{
+	font-size:1rem;
+	font-style:italic;
+	margin-top:0;
+}
 header {
- 	background-color: rgba(71, 71, 71, 0.5);	
+	margin-bottom:$spacingBig;
+	display: flex;
+	flex-direction:column;
+	justify-content: center;
+	padding:1rem 0rem;
+ 	background-color: $colorDark;
 }
 
 .container {
@@ -35,30 +53,118 @@ header {
 	align-items: center;
 }
 
+
+#actions{
+	display:flex;
+	flex-direction:column;
+	width:100%;
+	margin-bottom:$spacingSmall;
+}
+button{
+	color: $colorDark;
+	font-size:1.25rem;
+	font-weight:700;
+}
+
+.searchContainer{
+
+}
+#searchInput{
+	text-align: center;
+	padding:1rem 2rem;
+	width:100%;
+	border: 4px solid $colorAccent;
+	box-shadow: $boxShadowDark1;
+	color: $colorDark;
+	font-size:1.5rem;
+	font-weight: 700;
+}
+.inputContainer{
+	display:flex;
+	flex-direction:row;
+	justify-content: space-between;
+	input:last-child{
+		margin-right:0;
+	}
+}
+input::placeholder{
+	color:lighten($colorDark, 30%);
+}
+#getBike{
+	// margin-right:$spacingSmall;
+}
+#getBike, #getCafe {
+	flex-grow:1;
+	margin-right: $spacingSmall;
+	margin-bottom: $spacingSmall;
+	background-color: $colorAccent;
+	padding: 1rem 1.5rem;
+	border:none;
+	box-shadow: 8px 8px 0px $colorDark;
+	outline: 3px solid $colorLight;
+	outline-offset: -8px;
+
+	text-align:center;
+	color: $colorDark;
+	font-size:1.5rem;
+	font-weight: 700;
+	&:hover {
+		background-color:lighten($colorAccent, 7%);
+	}
+}
+ #go {
+	flex-grow:0;
+	margin-bottom: $spacingSmall;
+	background-color: $colorDark;
+	padding: 1rem 1.5rem;
+	border:none;
+	box-shadow: $boxShadowDark1;
+	outline: 3px solid $colorAccent;
+	outline-offset: -8px;
+	text-align:center;
+	color: $colorAccent;
+	font-size:1.5rem;
+	font-weight: 700;
+	&:hover {
+		cursor:pointer;
+		background-color:lighten($colorDark, 7%);
+	}
+}
+.submitContainer{
+	display:flex;
+	justify-content: center;
+}
+
 .results {
-	width: 75%;
-	background-color: #f3f4e9;
-	border: 1px solid #99d5c8;
-    box-shadow: 5px 5px 2px rgba(71, 71, 71, 0.5);	
+	width: 100%;
+	background-color: $colorLight;
+	border: 4px solid $colorAccent;
+	box-shadow: $boxShadowDark1;
+	margin-bottom:$spacingBig;
+	img{
+		max-width:100%;
+	}
 }
 
-button.input {
-	background-color: #99d5c8;
-	padding: 5%;
-}
-
-#go {
-	background-color: #f3f4e9;
-	border: 1px solid #99d5c8;
-	padding: 10px 25px;
-}
 
 footer {
-	background-color: rgba(71, 71, 71, 0.5);
+	display:flex;
+	justify-content: center;
+	padding:$spacingSmall 0;
+	background-color: $colorDark;
 }
 
 .copyright {
-	background-color: #99d5c8;
-	padding: 10px 25px;	
-	color: #f3f4e9;
+	width:100%;
+	text-align: center;
+	// background-color: $colorAccent;
+	// padding: $spacingSmall;
+	color: $colorAccent;
+	font-weight:700;
+}
+
+// TRANSITIONS
+
+button, a{
+	transition:0.3s;
 }

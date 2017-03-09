@@ -117,14 +117,18 @@ console.log(res);
 
 var map;
 function initMap() {
-	console.log('initmap');
-  map = new google.maps.Map(document.getElementById('map'), {
-    center: {lat: citybikes.bikeLat, lng: citybikes.bikeLng},
+    console.log('initmap');
+    var myLatLong = {lat: citybikes.bikeLat, lng: citybikes.bikeLng}
+    map = new google.maps.Map(document.getElementById('map'), {
+    center: myLatLong,
     zoom: 18
   });
-}
-
-
+    var marker = new google.maps.Marker({
+        position: myLatLong,
+        map: map,
+        title: 'Hello World!'
+    });
+};
 
 
 

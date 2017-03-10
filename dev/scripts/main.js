@@ -164,7 +164,8 @@ function initMap() {
     var marker = new google.maps.Marker({
         position: myLatLong,
         map: mapBike,
-        title: citybikes.userInputBike
+        title: citybikes.userInputBike,
+        icon: 'assets/bikeMarker.svg'
     });
     // Cafe Map
     mapCafe = new google.maps.Map(document.getElementById('mapCafe'), {
@@ -174,10 +175,43 @@ function initMap() {
     var markerTwo = new google.maps.Marker({
 	    position: cafeLatLong,
 	    map: mapCafe,
-	    title: citybikes.userInputCafe
+	    title: citybikes.userInputCafe,
+	    icon: 'assets/coffeeMarker.svg'
     })
+	
+	// var icons = {
+	//   bikes: {
+	//     icon: 'assets/bike.png'
+	//   },
+	//   coffee: {
+	//     icon: 'assets/happycup.png'
+	//   }
+	// };
+
+    // function addMarker(feature) {
+    //   var marker = new google.maps.Marker({
+    //     position: feature.position,
+    //     icon: icons[feature.type].icon,
+    //     map: map
+    //   });
+    // }
+
+    // var features = [
+    //   {
+    //     position: new google.maps.LatLng(myLatLong),
+    //     type: 'info'
+    //   }, {
+    //     position: new google.maps.LatLng(cafeLatLong),
+    //     type: 'info'
+    //   }
+    // ];
+
+    // for (var i = 0, feature; feature = features[i]; i++) {
+    //   addMarker(feature);
+    // }
 
 };
+
 
 
 // DISTANCE MATRIX
@@ -256,18 +290,6 @@ function initMap() {
 //        }
 //        markersArray = [];
 //      }
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

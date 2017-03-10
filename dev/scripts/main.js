@@ -91,7 +91,7 @@ citybikes.getBikeNetworks = function(){
 	// console.log("BIKES",data.networks);
 	// data.location.latitude
 	citybikes.bikeStations = data.networks;
-	console.log("networks",data.networks)
+	// console.log("networks",data.networks)
 	citybikes.stationLng = citybikes.bikeStations[0].location.longitude;
 	citybikes.stationLat = citybikes.bikeStations[0].location.latitude;
 	// console.log(citybikes.stationLat, citybikes.stationLng);

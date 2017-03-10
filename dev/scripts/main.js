@@ -146,7 +146,7 @@ function initMap() {
         position: myLatLong,
         map: mapBike,
         title: citybikes.userInputBike,
-        icon: 'assets/bikeMarker.png'
+        icon: 'assets/bikeMarker.svg'
     });
     // Cafe Map
     mapCafe = new google.maps.Map(document.getElementById('mapCafe'), {
@@ -157,7 +157,7 @@ function initMap() {
 	    position: cafeLatLong,
 	    map: mapCafe,
 	    title: citybikes.userInputCafe,
-	    icon: 'assets/coffeeMarker.png'
+	    icon: 'assets/coffeeMarker.svg'
     })
 	
 	// var icons = {

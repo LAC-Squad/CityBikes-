@@ -118,20 +118,29 @@ console.log(res);
 var map;
 function initMap() {
     console.log('initmap');
-    var myLatLong = {lat: citybikes.bikeLat, lng: citybikes.bikeLng}
+    var myLatLong = {lat: citybikes.bikeLat, lng: citybikes.bikeLng};
+    var cafeLatLong = {lat: citybikes.cafeLat, lng: citybikes.cafeLng};
+    var centerLat = (citybikes.bikeLat + (citybikes.bikeLat % citybikes.cafeLat));
+    var centerLong = (citybikes.bikeLng + (citybikes.bikeLng % citybikes.cafeLng));
+    var centerLatLong = {lat: centerLat, lng: centerLong};
+    console.log("Hello", centerLat, centerLong);
+    console.log("HELLOOOO", centerLatLong);
     map = new google.maps.Map(document.getElementById('map'), {
-    center: myLatLong,
-    zoom: 18
+    center: centerLatLong,
+    zoom: 14
   });
     var marker = new google.maps.Marker({
         position: myLatLong,
         map: map,
         title: 'Hello World!'
     });
+
+    var markerTwo = new google.maps.Marker({
+	    position: cafeLatLong,
+	    map: map,
+	    title: 'Hello World!'
+    })
 };
-
-
-
 
 
 $(function(){

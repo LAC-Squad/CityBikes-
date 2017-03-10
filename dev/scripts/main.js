@@ -94,7 +94,7 @@ citybikes.getBikeNetworks = function(){
 	citybikes.stationLng = bikeStations[0].location.longitude;
 	citybikes.stationLat = bikeStations[0].location.latitude;
 	// console.log(citybikes.stationLat, citybikes.stationLng);
-	console.log("MATH",citybikes.bikeLat, citybikes.stationLat,"=",(citybikes.bikeLat % citybikes.stationLat));\
+	console.log("MATH",citybikes.bikeLat, citybikes.stationLat,"=",(citybikes.bikeLat % citybikes.stationLat));
 	//!!! Origins are TYPED locations, destinations are BIKES array, CAFE array, then get distance in KM, if nearby push to array or display marker for each.
 	bikeStations.forEach(function(index){
 		// if((citybikes.bikeLat % citybikes.stationLat)< 0.1 || ){

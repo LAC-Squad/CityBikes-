@@ -72,8 +72,9 @@ citybikes.getUserLocation = function(res) {
 			citybikes.cafeLng = cafedata[0].results[0].geometry.location.lng;
 			//map thing
 			initMap();
-			console.log("WORKS???",citybikes.bikeLat, citybikes.bikeLng,"|",citybikes.cafeLat, citybikes.cafeLng);
-			citybikes.getBikeNetworks();
+			initDM();
+			// console.log("WORKS???",citybikes.bikeLat, citybikes.bikeLng,"|",citybikes.cafeLat, citybikes.cafeLng);
+			citybikes.getBikeNetworks(citybikes.bikeLat,citybikes.bikeLng);
 		});
 	});	
 };
@@ -89,18 +90,15 @@ citybikes.getBikeNetworks = function(){
 	$.when(bikeNetworks).done(function(data){
 	// console.log("BIKES",data.networks);
 	// data.location.latitude
-	bikeStations = data.networks;
+	citybikes.bikeStations = data.networks;
 	// console.log("networks",data.networks)
-	citybikes.stationLng = bikeStations[0].location.longitude;
-	citybikes.stationLat = bikeStations[0].location.latitude;
+	citybikes.stationLng = citybikes.bikeStations[0].location.longitude;
+	citybikes.stationLat = citybikes.bikeStations[0].location.latitude;
 	// console.log(citybikes.stationLat, citybikes.stationLng);
-	console.log("MATH",citybikes.bikeLat, citybikes.stationLat,"=",(citybikes.bikeLat % citybikes.stationLat));
+	// console.log("MATH",citybikes.bikeLat, citybikes.stationLat,"=",(citybikes.bikeLat % citybikes.stationLat));
+	console.log("bike stations", citybikes.bikeStations);
 	//!!! Origins are TYPED locations, destinations are BIKES array, CAFE array, then get distance in KM, if nearby push to array or display marker for each.
-	bikeStations.forEach(function(index){
-		// if((citybikes.bikeLat % citybikes.stationLat)< 0.1 || ){
 
-		// }
-	});
 	// data.filter()
 		// citybikes.nearbyBikes = bikeNetworks.filter((function(){
 		// 	// if the difference between 'citybikes.bikeLat' and each item in the filter is greater than 0.1 &&
@@ -112,14 +110,14 @@ citybikes.getBikeNetworks = function(){
 	})
 };
 
-citybikes.getCoffeeShops = function (getCoffeeShops) {
+citybikes.getCoffeeShops = function (lat,lng) {
 	return $.ajax({
 		url: 'https://api.foursquare.com/v2/venues/explore',
 		method: 'GET',
 		dataType: 'json',
 		data: {
-			ll: '43.6,-79.3978587',
-			v: 20170307,
+			ll: lat, lng,
+			v: 20170310,
 			client_id: 'HNQJUKZ0TNYSMRZ2N2CNAUZZFQFDJVIBBB0BZ3RG2XAJD43G',
 			client_secret: 'HZKPB3D5EANIS5PHQK5ZYLRQFDVE04CQ5KBSUZTK5UCT3JH2',
 			section: 'coffee'
@@ -127,18 +125,23 @@ citybikes.getCoffeeShops = function (getCoffeeShops) {
 	});
 };
 
-var coffeeShops = citybikes.getCoffeeShops();
+citybikes.coffeeShops = citybikes.getCoffeeShops();
 
 
-$.when(coffeeShops).done(function(res){
-console.log(res);
+$.when(citybikes.coffeeShops).done(function(res){
+// console.log("This is happening", res);
 })
+
+// citybikes.coffeeShops.response.groups["0"].items["0"].venue.location.lat
+// citybikes.coffeeShops.response.groups["0"].items["0"].venue.location.lng
+
+// .response.suggestedRadius
 
 var map;
 function initMap() {
     console.log('initmap');
-    var myLatLong = {lat: citybikes.bikeLat, lng: citybikes.bikeLng};
-    var cafeLatLong = {lat: citybikes.cafeLat, lng: citybikes.cafeLng};
+    citybikes.myLatLong = {lat: citybikes.bikeLat, lng: citybikes.bikeLng};
+    citybikes.cafeLatLong = {lat: citybikes.cafeLat, lng: citybikes.cafeLng};
 
  //    var centerLat = (citybikes.bikeLat - (citybikes.bikeLat % citybikes.cafeLat));
  //    var centerLong = (citybikes.bikeLng - (citybikes.bikeLng % citybikes.cafeLng));
@@ -158,138 +161,116 @@ function initMap() {
 	//Bike Map
 	var twoZoom = 18;
 	mapBike = new google.maps.Map(document.getElementById('mapBike'), {
-	    center: myLatLong,
+	    center: citybikes.myLatLong,
 	    zoom: twoZoom
 	});
-    var marker = new google.maps.Marker({
-        position: myLatLong,
-        map: mapBike,
-        title: citybikes.userInputBike,
-        icon: 'assets/bikeMarker.svg'
-    });
+	var check = 0;
+	citybikes.bikeStations.forEach(function(index){
+		check++;
+		console.log("????",check,index);
+	    var marker = new google.maps.Marker({
+	        position: {
+	        	lat:citybikes.bikeStations[index].location.latitude,
+	        	lng:citybikes.bikeStations[index].location.longitude
+	        },
+	        map: mapBike,
+	        title: citybikes.userInputBike,
+	        icon: 'assets/bikeMarker.svg'
+	    });
+	});
+
     // Cafe Map
     mapCafe = new google.maps.Map(document.getElementById('mapCafe'), {
-	    center: cafeLatLong,
+	    center: citybikes.cafeLatLong,
 	    zoom: twoZoom
 	});
     var markerTwo = new google.maps.Marker({
-	    position: cafeLatLong,
+	    position: citybikes.cafeLatLong,
 	    map: mapCafe,
 	    title: citybikes.userInputCafe,
 	    icon: 'assets/coffeeMarker.svg'
     })
-	
-	// var icons = {
-	//   bikes: {
-	//     icon: 'assets/bike.png'
-	//   },
-	//   coffee: {
-	//     icon: 'assets/happycup.png'
-	//   }
-	// };
-
-    // function addMarker(feature) {
-    //   var marker = new google.maps.Marker({
-    //     position: feature.position,
-    //     icon: icons[feature.type].icon,
-    //     map: map
-    //   });
-    // }
-
-    // var features = [
-    //   {
-    //     position: new google.maps.LatLng(myLatLong),
-    //     type: 'info'
-    //   }, {
-    //     position: new google.maps.LatLng(cafeLatLong),
-    //     type: 'info'
-    //   }
-    // ];
-
-    // for (var i = 0, feature; feature = features[i]; i++) {
-    //   addMarker(feature);
-    // }
 
 };
 
 
 
 // DISTANCE MATRIX
-// function initDM() {
-//        var bounds = new google.maps.LatLngBounds;
-//        var markersArray = [];
+function initDM() {
+       var bounds = new google.maps.LatLngBounds;
+       var markersArray = [];
 
-//        var origin1 = citybikes;
-//        var origin2 = 'Greenwich, England';
-//        var destinationA = 'Stockholm, Sweden';
-//        var destinationB = {lat: 50.087, lng: 14.421};
+       var origin1 = citybikes.myLatLong;
+       var origin2 = citybikes.cafeLatLong;
+       var destinationA = citybikes.bikeStations;
+       var destinationB = [];
 
-//        var destinationIcon = 'https://chart.googleapis.com/chart?' +
-//            'chst=d_map_pin_letter&chld=D|FF0000|000000';
-//        var originIcon = 'https://chart.googleapis.com/chart?' +
-//            'chst=d_map_pin_letter&chld=O|FFFF00|000000';
-//        var map = new google.maps.Map(document.getElementById('map'), {
-//          center: {lat: 55.53, lng: 9.4},
-//          zoom: 10
-//        });
-//        var geocoder = new google.maps.Geocoder;
+       var destinationIcon = 'https://chart.googleapis.com/chart?' +
+           'chst=d_map_pin_letter&chld=D|FF0000|000000';
+       var originIcon = 'https://chart.googleapis.com/chart?' +
+           'chst=d_map_pin_letter&chld=O|FFFF00|000000';
+       var map = new google.maps.Map(document.getElementById('map'), {
+         center: {lat: 55.53, lng: 9.4},
+         zoom: 10
+       });
+       var geocoder = new google.maps.Geocoder;
 
-//        var service = new google.maps.DistanceMatrixService;
-//        service.getDistanceMatrix({
-//          origins: [origin1, origin2],
-//          destinations: [destinationA, destinationB],
-//          travelMode: 'DRIVING',
-//          unitSystem: google.maps.UnitSystem.METRIC,
-//          avoidHighways: false,
-//          avoidTolls: false
-//        }, function(response, status) {
-//          if (status !== 'OK') {
-//            alert('Error was: ' + status);
-//          } else {
-//            var originList = response.originAddresses;
-//            var destinationList = response.destinationAddresses;
-//            var outputDiv = document.getElementById('output');
-//            outputDiv.innerHTML = '';
-//            deleteMarkers(markersArray);
+       var service = new google.maps.DistanceMatrixService;
+       service.getDistanceMatrix({
+         origins: [origin1, origin2],
+         destinations: [destinationA, destinationB],
+         travelMode: 'DRIVING',
+         unitSystem: google.maps.UnitSystem.METRIC,
+         avoidHighways: false,
+         avoidTolls: false
+       }, function(response, status) {
+         if (status !== 'OK') {
+           alert('Error was: ' + status);
+         } else {
+           var originList = response.originAddresses;
+           var destinationList = response.destinationAddresses;
+           var outputDiv = document.getElementById('output');
+           outputDiv.innerHTML = '';
+           deleteMarkers(markersArray);
 
-//            var showGeocodedAddressOnMap = function(asDestination) {
-//              var icon = asDestination ? destinationIcon : originIcon;
-//              return function(results, status) {
-//                if (status === 'OK') {
-//                  map.fitBounds(bounds.extend(results[0].geometry.location));
-//                  markersArray.push(new google.maps.Marker({
-//                    map: map,
-//                    position: results[0].geometry.location,
-//                    icon: icon
-//                  }));
-//                } else {
-//                  alert('Geocode was not successful due to: ' + status);
-//                }
-//              };
-//            };
+           var showGeocodedAddressOnMap = function(asDestination) {
+             var icon = asDestination ? destinationIcon : originIcon;
+             return function(results, status) {
+               if (status === 'OK') {
+                 map.fitBounds(bounds.extend(results[0].geometry.location));
+                 markersArray.push(new google.maps.Marker({
+                   map: mapBike,
+                   position: results[0].geometry.location,
+                   icon: icon
+                 }));
+               } else {
+                 alert('Geocode was not successful due to: ' + status);
+               }
+             };
+           };
 
-//            for (var i = 0; i < originList.length; i++) {
-//              var results = response.rows[i].elements;
-//              geocoder.geocode({'address': originList[i]},
-//                  showGeocodedAddressOnMap(false));
-//              for (var j = 0; j < results.length; j++) {
-//                geocoder.geocode({'address': destinationList[j]},
-//                    showGeocodedAddressOnMap(true));
-//                outputDiv.innerHTML += originList[i] + ' to ' + destinationList[j] +
-//                    ': ' + results[j].distance.text + ' in ' +
-//                    results[j].duration.text + '<br>';
-//              }
-//            }
-//          }
-//        });
-//      }
+           for (var i = 0; i < originList.length; i++) {
+             var results = response.rows[i].elements;
+             geocoder.geocode({'address': originList[i]},
+                 showGeocodedAddressOnMap(false));
+             for (var j = 0; j < results.length; j++) {
+               geocoder.geocode({'address': destinationList[j]},
+                   showGeocodedAddressOnMap(true));
+               outputDiv.innerHTML += originList[i] + ' to ' + destinationList[j] +
+                   ': ' + results[j].distance.text + ' in ' +
+                   results[j].duration.text + '<br>';
+             }
+           }
+         }
+       });
+     }
 
-//      function deleteMarkers(markersArray) {
-//        for (var i = 0; i < markersArray.length; i++) {
-//          markersArray[i].setMap(null);
-//        }
-//        markersArray = [];
-//      }
+     function deleteMarkers(markersArray) {
+       for (var i = 0; i < markersArray.length; i++) {
+         markersArray[i].setMap(null);
+       }
+       markersArray = [];
+     }
 
 
 

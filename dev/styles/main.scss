@@ -132,6 +132,7 @@ input::placeholder{
 }
 
 .results {
+	position: relative;
 	width: 100%;
 	background-color: $colorLight;
 	border: 4px solid $colorAccent;
@@ -143,6 +144,24 @@ input::placeholder{
 }
 #map{
 	width:100%;
+	height:500px;
+}
+.mapOverlay{
+	position: absolute;
+	top:0;bottom:0;left:0;right:0;
+	background-color: rgba(0,0,0,1);
+}
+.twoMaps{
+	display:flex;
+	background-color: $colorAccent;
+}
+#mapBike{
+	border-right:4px solid $colorAccent;
+	// margin-right:$spacingSmall;
+	// margin-right:4px;
+}
+#mapBike,#mapCafe{
+	width:50%;
 	height:500px;
 }
 input:-webkit-autofill {

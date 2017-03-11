@@ -81,6 +81,16 @@ citybikes.getUserLocation = function(res) {
 		$.when(citybikes.bikeLocation,citybikes.cafeLocation)
 		.then(function(bikedata,cafedata){
 <<<<<<< HEAD
+<<<<<<< HEAD
+			// console.log("DATAS",bikedata, cafedata)
+			// console.log("CITY?",bikedata[0].results[0].address_components[3].long_name)
+			citybikes.cityName1 = (bikedata[0].results[0].address_components[3].long_name);
+=======
+
+			console.log("DATAS",bikedata, cafedata)
+			console.log("CITY?",bikedata[0].results[0].address_components[4].long_name)
+>>>>>>> 256f0142c642267815941b0e464a3992a060f269
+=======
 			  console.log("DATAS",bikedata, cafedata)
 =======
 			// console.log("DATAS",bikedata, cafedata)
@@ -91,6 +101,7 @@ citybikes.getUserLocation = function(res) {
 			console.log("CITY [4]???",bikedata[0].results[0].address_components[4].long_name)
 >>>>>>> c1b57937acaf2e45194ba1edccd7660b584cc860
 
+>>>>>>> b1d1227342918468bdf3bb05c79c1bee481149cd
 			// Get Bikes
 			citybikes.bikeLat = bikedata[0].results[0].geometry.location.lat;
 			citybikes.bikeLng = bikedata[0].results[0].geometry.location.lng;
@@ -109,11 +120,20 @@ citybikes.getUserLocation = function(res) {
 			initMap();
 			initDM();
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> b1d1227342918468bdf3bb05c79c1bee481149cd
 
 			// console.log("WORKS???",citybikes.bikeLat, citybikes.bikeLng,"|",citybikes.cafeLat, citybikes.cafeLng);
 			citybikes.getBikeNetworks(citybikes.bikeLat,citybikes.bikeLng, citybikes.cityName);
 		
 					
+<<<<<<< HEAD
+>>>>>>> 256f0142c642267815941b0e464a3992a060f269
+=======
+>>>>>>> b1d1227342918468bdf3bb05c79c1bee481149cd
 		});
 		// 
 	});	
@@ -128,12 +148,20 @@ citybikes.getBikeNetworks = function(){
 		}
 	});
 	$.when(bikeNetworks).done(function(data){
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> b1d1227342918468bdf3bb05c79c1bee481149cd
 		// citybikes.cityName1 = bikedata[0].results[0].address_components[4].long_name;
 
 		citybikes.bikeStations = data.networks;
 		citybikes.stationLng = citybikes.bikeStations[0].location.longitude;
 		citybikes.stationLat = citybikes.bikeStations[0].location.latitude;
 		// console.log("bike stations", citybikes.bikeStations);
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> b1d1227342918468bdf3bb05c79c1bee481149cd
 	// console.log("BIKES",data.networks);
 	// data.location.latitude
 	citybikes.bikeStations = data.networks;
@@ -153,6 +181,10 @@ citybikes.getBikeNetworks = function(){
 		// 	// save the result in the array, log array
 
 		// });
+<<<<<<< HEAD
+>>>>>>> 256f0142c642267815941b0e464a3992a060f269
+=======
+>>>>>>> b1d1227342918468bdf3bb05c79c1bee481149cd
 	})
 };
 

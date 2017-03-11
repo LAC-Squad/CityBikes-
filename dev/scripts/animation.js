@@ -29,6 +29,32 @@ divImageArray.each(function(){
 });
  });
 
+// $(function() {
+//   var moveLeft = 20;
+//   var moveDown = 10;
+
+//   $('#trigger').hover(function(e) {
+//     $('#pop-up').show();
+//       .css('top', e.pageY + moveDown)
+//       .css('left', e.pageX + moveLeft)
+//       .appendTo('body');
+//   }, function() {
+//     $('#pop-up').hide();
+//   });
+
+//   $('#trigger').mousemove(function(e) {
+//     $("div#pop-up").css('top', e.pageY + moveDown).css('left', e.pageX + moveLeft);
+//   });
+
+// });
+// //  $('#legend').on('click', function(){
+//   // var poseName = $('.poseTitle').text(); //we could put variable info in here
+//   // var benefitName = $('.benefits').text();
+//   var customMessage = "Want to explore a city, and discover some local cafés? Check out Cruisin'!";
+//   window.open("Instructions");
+// });
+
+// $("#go").val('');
 
 // //function for background animations
 

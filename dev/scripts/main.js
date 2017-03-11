@@ -80,12 +80,16 @@ citybikes.getUserLocation = function(res) {
 
 		$.when(citybikes.bikeLocation,citybikes.cafeLocation)
 		.then(function(bikedata,cafedata){
+<<<<<<< HEAD
+			  console.log("DATAS",bikedata, cafedata)
+=======
 			// console.log("DATAS",bikedata, cafedata)
 			// console.log("CITY?",bikedata[0].results[0].address_components[3].long_name)
 			citybikes.cityName1 = ("city [3]???",bikedata[0].results[0].address_components[3].long_name);
 
 // 			console.log("DATAS",bikedata, cafedata)
 			console.log("CITY [4]???",bikedata[0].results[0].address_components[4].long_name)
+>>>>>>> c1b57937acaf2e45194ba1edccd7660b584cc860
 
 			// Get Bikes
 			citybikes.bikeLat = bikedata[0].results[0].geometry.location.lat;
@@ -108,7 +112,7 @@ citybikes.getUserLocation = function(res) {
 
 			// console.log("WORKS???",citybikes.bikeLat, citybikes.bikeLng,"|",citybikes.cafeLat, citybikes.cafeLng);
 			citybikes.getBikeNetworks(citybikes.bikeLat,citybikes.bikeLng, citybikes.cityName);
-		console.log("it works", citybikes.cityName)
+		
 					
 		});
 		// 

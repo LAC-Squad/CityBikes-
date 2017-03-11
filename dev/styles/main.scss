@@ -1,6 +1,7 @@
 
 @import 'setup';
 @import 'variables';
+@import 'medques';
 
 @import url('https://fonts.googleapis.com/css?family=Montserrat|Roboto');
 
@@ -126,19 +127,45 @@ button{
 	text-align: center;
 	padding:1rem 2rem;
 	width:100%;
-	border: 4px solid $colorAccent;
+	// border: 4px solid $colorAccent;
 	color: $colorDark;
 	font-size:1.5rem;
 	font-weight: 700;
 }
+#legend{
+	text-align:center;
+
+	color:$colorAccent;
+
+}
+#container__info{
+  width: 580px;
+  margin: 100px auto 0 auto;
+  padding: 20px;
+  background: #000;
+  border: 1px solid #1a1a1a;
+}
 .inputContainer{
 	display:flex;
-	flex-direction:row;
-	justify-content: space-between;
-	flex-wrap:wrap;
+	flex-direction:column;
+	width:50%;
+	text-align:center;
+	margin:0 auto;
+	justify-content: center;
+	flex-wrap:no-wrap;
 	*:last-child{
 		margin-right:0;
 	}
+	div#pop-up {
+  display: none;
+  position: absolute;
+  width: 280px;
+  padding: 10px;
+  background: #eeeeee;
+  color: #000000;
+  border: 1px solid #1a1a1a;
+  font-size: 90%;
+}
 }
 input::placeholder{
 	color:lighten($colorDark, 30%);
@@ -153,31 +180,38 @@ input::placeholder{
 	background-color: $colorAccent;
 	padding: 1rem 1.5rem;
 	border:none;
-	outline: 3px solid $colorLight;
-	outline-offset: -8px;
+	// outline: 3px solid $colorLight;
+	// outline-offset: -8px;
 	text-align:center;
 	color: $colorDark;
 	font-size:1.5rem;
-	font-weight: 700;
+	// font-weight: 700;
 	&:hover {
 		background-color:lighten($colorAccent, 7%);
 	}
 }
  #go {
-	flex-grow:0;
+	flex-grow:1;
 	margin-bottom: $spacingSmall;
 	background-color: $colorDark;
 	padding: 1rem 1.5rem;
 	border:none;
-	outline: 3px solid $colorAccent;
-	outline-offset: -8px;
+	text-align:center;
+	margin:0 auto;
+	padding-bottom:10px;
+	margin-bottom:10px;
+	// outline: 3px solid $colorAccent;
+
 	text-align:center;
 	color: $colorAccent;
 	font-size:1.5rem;
-	font-weight: 700;
+	
 	&:hover {
 		cursor:pointer;
 		background-color:lighten($colorDark, 7%);
+	}
+	img {
+		width:15%;
 	}
 }
 .submitContainer{
@@ -188,7 +222,7 @@ input::placeholder{
 	position: relative;
 	width: 100%;
 	background-color: $colorLight;
-	border: 4px solid $colorAccent;
+	// border: 4px solid $colorAccent;
 	// margin-bottom:$spacingBig;
 	img{
 		max-width:100%;
@@ -206,6 +240,7 @@ input::placeholder{
 #mapBike{
 	border-right:4px solid $colorAccent;
 }
+
 
 #mapBike,#mapCafe{
 	width:50%;

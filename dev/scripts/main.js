@@ -81,7 +81,7 @@ citybikes.getUserLocation = function(res) {
 
 			// console.log("WORKS???",citybikes.bikeLat, citybikes.bikeLng,"|",citybikes.cafeLat, citybikes.cafeLng);
 			citybikes.getBikeNetworks(citybikes.bikeLat,citybikes.bikeLng, citybikes.cityName);
-		console.log("it works", citybikes.cityName)
+		
 					
 		});
 		// 

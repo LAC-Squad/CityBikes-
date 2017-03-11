@@ -29,6 +29,23 @@ citybikes.init = function(){
 	citybikes.getUserLocation();
 }
 
+// This checks the citybikes API, puts in the city name argument from our google location request as the endpoint
+citybikes.getBikeNetworksStations = function(city){
+	console.log("CITY IS:",city)
+	var bikeNetworksStations = $.ajax({
+		// url:`http://api.citybik.es/v2/networks/${city}`,
+		url:`http://api.citybik.es/v2/networks/toronto`,
+		method:'GET',
+		dataType: 'json',
+		data:{
+		}
+	});
+	$.when(bikeNetworksStations).done(function(result){
+		console.log("RESULT",result);
+	})
+}
+
+
 citybikes.getUserLocation = function(res) {
 	$('#searchForm').submit(function(event){
 		event.preventDefault();
@@ -63,7 +80,16 @@ citybikes.getUserLocation = function(res) {
 
 		$.when(citybikes.bikeLocation,citybikes.cafeLocation)
 		.then(function(bikedata,cafedata){
+<<<<<<< HEAD
 			  console.log("DATAS",bikedata, cafedata)
+=======
+			// console.log("DATAS",bikedata, cafedata)
+			// console.log("CITY?",bikedata[0].results[0].address_components[3].long_name)
+			citybikes.cityName1 = ("city [3]???",bikedata[0].results[0].address_components[3].long_name);
+
+// 			console.log("DATAS",bikedata, cafedata)
+			console.log("CITY [4]???",bikedata[0].results[0].address_components[4].long_name)
+>>>>>>> c1b57937acaf2e45194ba1edccd7660b584cc860
 
 			// Get Bikes
 			citybikes.bikeLat = bikedata[0].results[0].geometry.location.lat;
@@ -74,7 +100,12 @@ citybikes.getUserLocation = function(res) {
 			// Get Cafe
 			citybikes.cafeLat = cafedata[0].results[0].geometry.location.lat;
 			citybikes.cafeLng = cafedata[0].results[0].geometry.location.lng;
+
+			citybikes.getBikeNetworksStations(citybikes.cityName1);
+
 			//map thing
+			// console.log("WORKS???",citybikes.bikeLat, citybikes.bikeLng,"|",citybikes.cafeLat, citybikes.cafeLng);
+			// citybikes.getBikeNetworks(citybikes.bikeLat,citybikes.bikeLng);
 			initMap();
 			initDM();
 
@@ -97,6 +128,12 @@ citybikes.getBikeNetworks = function(){
 		}
 	});
 	$.when(bikeNetworks).done(function(data){
+		// citybikes.cityName1 = bikedata[0].results[0].address_components[4].long_name;
+
+		citybikes.bikeStations = data.networks;
+		citybikes.stationLng = citybikes.bikeStations[0].location.longitude;
+		citybikes.stationLat = citybikes.bikeStations[0].location.latitude;
+		// console.log("bike stations", citybikes.bikeStations);
 	// console.log("BIKES",data.networks);
 	// data.location.latitude
 	citybikes.bikeStations = data.networks;
@@ -148,7 +185,7 @@ $.when(citybikes.coffeeShops).done(function(res){
 
 var map;
 function initMap() {
-    console.log('initmap');
+    // console.log('initmap');
     citybikes.myLatLong = {lat: citybikes.bikeLat, lng: citybikes.bikeLng};
     citybikes.cafeLatLong = {lat: citybikes.cafeLat, lng: citybikes.cafeLng};
 

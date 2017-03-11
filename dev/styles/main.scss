@@ -9,7 +9,30 @@ body {
     font-family: 'Roboto', sans-serif; 
     background-color: $colorLight;
     color: #474747;
+
 }
+
+button,input, a{
+	transition:0.3s;
+}
+
+
+
+.background{
+position:relative;
+z-index:-9;
+}
+
+.imgContain {
+
+  position: absolute;
+ 
+display:inline-block;
+margin:0 auto;
+
+
+}
+
 
 .wrapper {
     margin: 0 auto;
@@ -17,13 +40,15 @@ body {
     width: 80%;
 }  
 
-.imgWrapper {
-	position:absolute;
-	z-index:-999999;
-	opacity:.9;
-	height:100%;
-	width:100%;
+
+img {
+	border:1px solid black;
+	border:0;
+
 }
+
+
+
 
 h1, h2, h3 {
 	text-align:center;
@@ -58,7 +83,7 @@ header {
 	align-items: center;
 }
 body{
-	overflow-x:hidden;
+	// overflow-x:hidden;
 }
 
 #actions{
@@ -171,6 +196,7 @@ input::placeholder{
 	// margin-right:$spacingSmall;
 	// margin-right:4px;
 }
+
 #mapBike,#mapCafe{
 	width:50%;
 	height:500px;
@@ -195,9 +221,66 @@ footer {
 	color: $colorAccent;
 	font-weight:700;
 }
+.backgroundAnimate {
+ 
+
+
+ -webkit-animation-name: blink;
+ -webkit-animation-duration: 10s;
+ -webkit-animation-timing-function: linear;
+ -webkit-animation-delay: 0s;
+ -webkit-animation-iteration-count: 3;
+ -webkit-animation-direction: normal;
+ -webkit-animation-fill-mode: none;
+
+ animation-name: blink;
+ animation-duration: 10s;
+ animation-timing-function: linear;
+ animation-delay: 0s;
+ animation-iteration-count: 3;
+ animation-direction: normal;
+ animation-fill-mode: none;
+
+}
+
+@-webkit-keyframes blink {
+  0%{
+	opacity: 1;
+  }
+  25%{
+	opacity: 0;
+  }
+  50%{
+	opacity: 1;
+  }
+  75%{
+	opacity: 0;
+  }
+  100%{
+	opacity: 1;
+  }
+}
+
+@keyframes blink {
+  0%{
+	opacity: 1;
+  }
+  25%{
+	opacity: 0;
+  }
+  50%{
+	opacity: 1;
+  }
+  75%{
+	opacity: 0;
+  }
+  100%{
+	opacity: 1;
+  }
+}
+
 
 // TRANSITIONS
 
-button,input, a{
-	transition:0.3s;
-}
+
+  

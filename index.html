@@ -3,60 +3,49 @@
 
 <head>
 	<meta charset="UTF-8">
-	<title>Cruisin' 🚲💨 </title>
+	<title>Two Tired</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="public/styles/style.css">	
 	<link href="https://fonts.googleapis.com/css?family=Montserrat|Roboto" rel="stylesheet">
-	
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
 </head>
+
 <body>
-
-		
-
 	<header>
-	<h1><a>Two Tired</a></h1>
-		<h3><strong>Explore</strong> <span>and </span><strong>Recharge</strong></h3>
+		<h1 class="animated flipInX"><a href="#">Two Tired</a></h1>
+		<h3 class="animated fadeIn"><strong>Explore</strong> <span>and </span><strong>Recharge</strong></h3>
 	</header>
-
 
 	<main class="wrapper">
 		<div class="backgroundAnimate">
-		 <div class="background">
-
-			<div class="imgContain pin6">
-				<img src="icons/pin.png" alt="pin background">
-			</div>
-			<div class="imgContain coffee7">
-				<img src="icons/coffeesleeve.png" alt="coffee background">
-			</div>
-			<div class="imgContain happy8">
-				<img src="icons/happycup.png" alt="coffee background">
-			</div>
-			<div class="imgContain bike9">
-				<img src="icons/bike.png" alt="coffee background">
-			</div>
-			<div class="imgContain bean10"> 
-			<img src="icons/bean.png" alt="coffee background">
-			</div>
-			
-
-</div>
-</div>
-		<div id="actions">
-			<form class="inputContainer" id="searchForm">
-				<input type="text" id="getBike" placeholder="Find a bike!" required>
-				<input type="text" id="getCafe" placeholder="Find a café!" required>
-				<button type="submit" id="go" value="clicky">Go! Go! Go!</button>
-			</form>
-			<div class="submitContainer">
-
-
+			<div class="background">
+				<div class="imgContain pin6">
+					<img src="icons/pin.png" alt="pin background">
+				</div>
+				<div class="imgContain coffee7">
+					<img src="icons/coffeesleeve.png" alt="coffee background">
+				</div>
+				<div class="imgContain happy8">
+					<img src="icons/happycup.png" alt="coffee background">
+				</div>
+				<div class="imgContain bike9">
+					<img src="icons/bike.png" alt="coffee background">
+				</div>
+				<div class="imgContain bean10"> 
+				<img src="icons/bean.png" alt="coffee background">
+				</div>
 			</div>
 		</div>
-
-				
+		<div id="actions">
+			<form class="inputContainer" id="searchForm">
+				<input class="actionItem" type="text" id="getBike" placeholder="Find a bike!" required>
+				<input class="actionItem" type="text" id="getCafe" placeholder="Find a café!" required>
+				<button class="actionItem" type="submit" id="go" value="clicky">Go! Go! Go!</button>
+			</form>
+			<div class="submitContainer"></div>
+		</div>
+	
 		<section class="container">
-
 			<div class="results">
 				<!-- <div id="map"></div> -->
 				<div class="twoMaps">
@@ -66,25 +55,14 @@
 				</div>
 			</div>
 		</section>
-	
-
-			
-</div></div>
-</main>
+	</main>
 	<footer>
 		<p class="copyright">Made by Laura, Aaron and Chiara</p>
 	</footer>
-	<script src="http://maps.googleapis.com/maps/api/js?key=
-AIzaSyBwOl3ST9F6laG4JjX71DwUP1L2SZjcY3k&callback=initMap"
-	    async defer></script>
-	
 
-	</script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+	<script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyBwOl3ST9F6laG4JjX71DwUP1L2SZjcY3k&callback=initMap" async defer></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 	<script src="dev/scripts/animation.js"></script>
-	<script src="dev/scripts/main.js"></script>
-
-	
-	
+	<script src="dev/scripts/main.js"></script>	
 </body>
 </html>

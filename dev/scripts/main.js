@@ -63,8 +63,9 @@ citybikes.getUserLocation = function(res) {
 
 		$.when(citybikes.bikeLocation,citybikes.cafeLocation)
 		.then(function(bikedata,cafedata){
-			  console.log("DATAS",bikedata, cafedata)
 
+			console.log("DATAS",bikedata, cafedata)
+			console.log("CITY?",bikedata[0].results[0].address_components[4].long_name)
 			// Get Bikes
 			citybikes.bikeLat = bikedata[0].results[0].geometry.location.lat;
 			citybikes.bikeLng = bikedata[0].results[0].geometry.location.lng;

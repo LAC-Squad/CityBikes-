@@ -164,14 +164,16 @@ function initMap() {
 	    center: citybikes.myLatLong,
 	    zoom: twoZoom
 	});
-	var check = 0;
-	citybikes.bikeStations.forEach(function(index){
-		check++;
-		console.log("????",check,index);
+	// var check = 0;
+	// console.log(citybikes.bikeStations);
+	citybikes.bikeStations.forEach(function(item){
+		// check++;
+		console.log("????", item);
 	    var marker = new google.maps.Marker({
+	    	
 	        position: {
-	        	lat:citybikes.bikeStations[index].location.latitude,
-	        	lng:citybikes.bikeStations[index].location.longitude
+	        	lat:item.location.latitude,
+	        	lng:item.location.longitude
 	        },
 	        map: mapBike,
 	        title: citybikes.userInputBike,
@@ -190,6 +192,7 @@ function initMap() {
 	    title: citybikes.userInputCafe,
 	    icon: 'assets/coffeeMarker.svg'
     })
+
 
 };
 

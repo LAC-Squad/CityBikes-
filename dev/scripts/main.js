@@ -164,11 +164,15 @@ function initMap() {
 	    center: citybikes.myLatLong,
 	    zoom: twoZoom
 	});
-	// var check = 0;
 	// console.log(citybikes.bikeStations);
 	citybikes.bikeStations.forEach(function(item){
-		// check++;
-		console.log("????", item);
+		    var markerOne = new google.maps.Marker({
+			    position: citybikes.myLatLong,
+			    map: mapBike,
+			    title: citybikes.userInputBike,
+			    icon: 'icons/bikeMarker.svg'
+		    })
+		// console.log("????", item);
 	    var marker = new google.maps.Marker({
 	    	
 	        position: {
@@ -177,7 +181,7 @@ function initMap() {
 	        },
 	        map: mapBike,
 	        title: citybikes.userInputBike,
-	        icon: 'assets/bikeMarker.svg'
+	        icon: 'icons/bikeMarker.svg'
 	    });
 	});
 
@@ -190,7 +194,7 @@ function initMap() {
 	    position: citybikes.cafeLatLong,
 	    map: mapCafe,
 	    title: citybikes.userInputCafe,
-	    icon: 'assets/coffeeMarker.svg'
+	    icon: 'icons/coffeeMarker.svg'
     })
 
 

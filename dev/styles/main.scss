@@ -8,15 +8,14 @@ body {
     margin: 0 auto; 
     font-family: 'Roboto', sans-serif; 
     background-color: $colorLight;
-    color: #474747;
+ 
+
 
 }
 
 button,input, a{
 	transition:0.3s;
 }
-
-
 
 .background{
 position:relative;
@@ -25,10 +24,9 @@ z-index:-9;
 
 .imgContain {
 
-  position: absolute;
+position: absolute;
  
 display:inline-block;
-margin:0 auto;
 
 
 }
@@ -52,28 +50,44 @@ img {
 
 h1, h2, h3 {
 	text-align:center;
+	padding-left:15px;
 	font-family: 'Montserrat', sans-serif;
 	color: $colorAccent;
 } 
 
 h1 {
+	//we can somehow include the animation up here if we have time//
+
+
 	margin: 1rem 0 0.75rem 0;
-	font-size:3rem;
+	font-size:5.7rem;
 	letter-spacing: 4px;
-	text-transform: uppercase;
+	
+
 }
+
 h3{
-	font-size:1rem;
+	font-size:2rem;
 	letter-spacing:4px;
 	margin-top:0;
 }
+span::after, span::before{
+	content: "↔	";
+	
+	font-size:2rem;
+
+
+	color: $colorDark;	
+	
+}
+
 header {
 	margin-bottom:$spacingBig;
 	display: flex;
 	flex-direction:column;
 	justify-content: center;
 	padding:1rem 0rem;
- 	background-color: $colorDark;
+   color: rgba(71,71,71, 0.9);
 }
 
 .container {
@@ -83,7 +97,7 @@ header {
 	align-items: center;
 }
 body{
-	// overflow-x:hidden;
+	 overflow-x:hidden;
 }
 
 #actions{
@@ -210,7 +224,7 @@ footer {
 	display:flex;
 	justify-content: center;
 	padding:$spacingSmall 0;
-	background-color: $colorDark;
+	// background-color: $colorDark;
 }
 
 .copyright {

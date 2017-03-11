@@ -8,37 +8,37 @@
 body {
 	margin: 0 auto; 
 	font-family: 'Roboto', sans-serif; 
-	background-color: $colorLight;
+	background-color: $colorDark;
+
+	
 }
 
 button,input, a{
 	transition:0.3s;
 }
-.background{
-	position:relative;
-	z-index:-99;
-	*{
-		z-index:99;
-	}
+
+.wrapBorder {
+	border:5px dashed $colorAccent;
+	width:80%;
+	margin:0 auto;
+	text-align:center;
+	padding:50px;
+	background: linear-gradient(rgba(243,244,233, 0.8), rgba(77, 77, 77, 0.2)),
+                rgba(243,244,233, .6) url('http://i.imgur.com/OxYRdWw.png') repeat center fixed;
 }
-.imgContain {
-	position: absolute;
-	display:inline-block;
-}
+
+
 .wrapper {
     margin: 0 auto;
     max-width: 1000px;
     width: 80%;
 }  
-img {
-	border:1px solid black;
-	border:0;
-}
+
 h1, h2, h3 {
 	text-align:center;
 	padding-left:15px;
 	font-family: 'Montserrat', sans-serif;
-	color: $colorAccent;
+	color: $colorDark;
 	outline: none !important;
 }
 
@@ -48,19 +48,20 @@ h1 {
 	letter-spacing: 4px;
 	a{
 		text-decoration: none;
-		color:$colorAccent;
-		text-shadow:
-			0px 1px 0px darken($colorAccent,30%),
-			0px 2px 0px darken($colorAccent,30%),
-			0px 3px 0px darken($colorAccent,30%),
-			0px 4px 0px darken($colorAccent,30%);
+		color:$colorDark;
+		// text-shadow:
+		// 	0px 1px 0px darken($colorLight,60%),
+		// 	0px 2px 0px darken($colorLight,60%),
+		// 	0px 3px 0px darken($colorLight,60%),
+		// 	0px 4px 0px darken($colorLight,60%);
 		&:hover{
-			color: lighten($colorAccent, 7%);
-			text-shadow:
-				0px 1px 0px darken($colorAccent,20%),
-				0px 2px 0px darken($colorAccent,20%),
-				0px 3px 0px darken($colorAccent,20%),
-				0px 4px 0px darken($colorAccent,20%);		}
+			color: lighten($colorLight, 7%);
+		}
+			// text-shadow:
+			// 	0px 1px 0px darken($colorLight,20%),
+			// 	0px 2px 0px darken($colorLight,20%),
+			// 	0px 3px 0px darken($colorLight,20%),
+			// 	0px 4px 0px darken($colorLight,20%);		}
 		&:active{
 			color: lighten($colorAccent, 15%);
 		}
@@ -76,10 +77,10 @@ h3{
 	font-size:2rem;
 	letter-spacing:4px;
 	margin-top:0;
-	text-shadow:
-		0px 1px 0px darken($colorAccent,25%),
-		0px 2px 0px darken($colorAccent,25%),
-		0px 3px 0px darken($colorAccent,25%);
+	// text-shadow:
+	// 	0px 1px 0px darken($colorLight,25%),
+	// 	0px 2px 0px darken($colorLight,25%),
+	// 	0px 3px 0px darken($colorLight,25%);
 }
 
 
@@ -94,13 +95,14 @@ header {
 		content: "↔	";
 		font-size:2rem;
 		color: lighten($colorDark,30%);
-		text-shadow:
-			0px 1px 0px lighten($colorDark,20%),
-			0px 2px 0px lighten($colorDark,20%),
-			0px 3px 0px lighten($colorDark,20%);
-	}
+	// 	text-shadow:
+	// 		0px 1px 0px lighten($colorLight,20%),
+	// 		0px 2px 0px lighten($colorLight,20%),
+	// 		0px 3px 0px lighten($colorLight,20%);
+	// }
 }
 
+}
 .container {
 	display: flex;
 	flex-direction: column;
@@ -118,9 +120,9 @@ body{
 	// margin-bottom:$spacingSmall;
 }
 button{
-	color: $colorDark;
-	font-size:1.25rem;
-	font-weight:700;
+	color: $colorLight;
+	font-size:1.0rem;
+	
 }
 
 #searchInput{
@@ -128,16 +130,12 @@ button{
 	padding:1rem 2rem;
 	width:100%;
 	// border: 4px solid $colorAccent;
-	color: $colorDark;
-	font-size:1.5rem;
-	font-weight: 700;
-}
-#legend{
-	text-align:center;
-
-	color:$colorAccent;
+	color: $colorLight;
+	font-size:1.2rem;
 
 }
+
+
 #container__info{
   width: 580px;
   margin: 100px auto 0 auto;
@@ -147,8 +145,9 @@ button{
 }
 .inputContainer{
 	display:flex;
+	color: $colorLight;
 	flex-direction:column;
-	width:50%;
+	width:39%;
 	text-align:center;
 	margin:0 auto;
 	justify-content: center;
@@ -156,19 +155,9 @@ button{
 	*:last-child{
 		margin-right:0;
 	}
-	div#pop-up {
-  display: none;
-  position: absolute;
-  width: 280px;
-  padding: 10px;
-  background: #eeeeee;
-  color: #000000;
-  border: 1px solid #1a1a1a;
-  font-size: 90%;
-}
 }
 input::placeholder{
-	color:lighten($colorDark, 30%);
+	color:$colorLight;
 }
 #getBike{
 	// margin-right:$spacingSmall;
@@ -177,13 +166,13 @@ input::placeholder{
 	flex-grow:1;
 	margin-right: $spacingSmall;
 	margin-bottom: $spacingSmall;
-	background-color: $colorAccent;
+	background-color: $colorDark;
 	padding: 1rem 1.5rem;
 	border:none;
 	// outline: 3px solid $colorLight;
 	// outline-offset: -8px;
 	text-align:center;
-	color: $colorDark;
+	color: $colorLight;
 	font-size:1.5rem;
 	// font-weight: 700;
 	&:hover {
@@ -194,6 +183,7 @@ input::placeholder{
 	flex-grow:1;
 	margin-bottom: $spacingSmall;
 	background-color: $colorDark;
+	color: $colorLight;
 	padding: 1rem 1.5rem;
 	border:none;
 	text-align:center;
@@ -203,7 +193,7 @@ input::placeholder{
 	// outline: 3px solid $colorAccent;
 
 	text-align:center;
-	color: $colorAccent;
+	color: $colorLight;
 	font-size:1.5rem;
 	
 	&:hover {
@@ -211,9 +201,20 @@ input::placeholder{
 		background-color:lighten($colorDark, 7%);
 	}
 	img {
-		width:15%;
+		width:35%;
+		border:1px solid $colorAccent;
+		border-radius:50%;
+		padding:5px;
 	}
 }
+
+
+	svg {
+		width:50%;
+		text-align:center;
+		margin:0 auto;
+	}
+
 .submitContainer{
 	display:flex;
 	justify-content: center;
@@ -296,23 +297,23 @@ footer {
   }
 }
 
-@keyframes blink {
-  0%{
-	opacity: 1;
-  }
-  25%{
-	opacity: 0;
-  }
-  50%{
-	opacity: 1;
-  }
-  75%{
-	opacity: 0;
-  }
-  100%{
-	opacity: 1;
-  }
-}
+// @keyframes blink {
+//   0%{
+// 	opacity: 1;
+//   }
+//   25%{
+// 	opacity: 0;
+//   }
+//   50%{
+// 	opacity: 1;
+//   }
+//   75%{
+// 	opacity: 0;
+//   }
+//   100%{
+// 	opacity: 1;
+//   }
+
 
 
 // button flex

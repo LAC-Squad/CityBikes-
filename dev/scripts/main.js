@@ -82,10 +82,17 @@ citybikes.getUserLocation = function(res) {
 		.then(function(bikedata,cafedata){
 			// console.log("DATAS",bikedata, cafedata)
 			// console.log("CITY?",bikedata[0].results[0].address_components[3].long_name)
-			citybikes.cityName1 = (bikedata[0].results[0].address_components[3].long_name);
+			citybikes.cityName1 = ("city [3]???",bikedata[0].results[0].address_components[3].long_name);
+
+// 			console.log("DATAS",bikedata, cafedata)
+			console.log("CITY [4]???",bikedata[0].results[0].address_components[4].long_name)
+
 			// Get Bikes
 			citybikes.bikeLat = bikedata[0].results[0].geometry.location.lat;
 			citybikes.bikeLng = bikedata[0].results[0].geometry.location.lng;
+			// Get City Name
+			citybikes.cityName = bikedata[0].results[0].address_components[4].long_name;
+
 			// Get Cafe
 			citybikes.cafeLat = cafedata[0].results[0].geometry.location.lat;
 			citybikes.cafeLng = cafedata[0].results[0].geometry.location.lng;
@@ -98,7 +105,13 @@ citybikes.getUserLocation = function(res) {
 			initMap();
 			initDM();
 
+
+			// console.log("WORKS???",citybikes.bikeLat, citybikes.bikeLng,"|",citybikes.cafeLat, citybikes.cafeLng);
+			citybikes.getBikeNetworks(citybikes.bikeLat,citybikes.bikeLng, citybikes.cityName);
+		console.log("it works", citybikes.cityName)
+					
 		});
+		// 
 	});	
 };
 
@@ -117,6 +130,25 @@ citybikes.getBikeNetworks = function(){
 		citybikes.stationLng = citybikes.bikeStations[0].location.longitude;
 		citybikes.stationLat = citybikes.bikeStations[0].location.latitude;
 		// console.log("bike stations", citybikes.bikeStations);
+	// console.log("BIKES",data.networks);
+	// data.location.latitude
+	citybikes.bikeStations = data.networks;
+	// console.log("networks",data.networks)
+	citybikes.stationLng = citybikes.bikeStations[0].location.longitude;
+	citybikes.stationLat = citybikes.bikeStations[0].location.latitude;
+	// console.log(citybikes.stationLat, citybikes.stationLng);
+	// console.log("MATH",citybikes.bikeLat, citybikes.stationLat,"=",(citybikes.bikeLat % citybikes.stationLat));
+	// console.log("bike stations", citybikes.bikeStations);
+	//!!! Origins are TYPED locations, destinations are BIKES array, CAFE array, then get distance in KM, if nearby push to array or display marker for each.
+
+	// data.filter()
+		// citybikes.nearbyBikes = bikeNetworks.filter((function(){
+		// 	// if the difference between 'citybikes.bikeLat' and each item in the filter is greater than 0.1 &&
+		// 	// citybikes.bikeLng is greater than 0.1, THEN
+		// 	// if ((citybikes.bikeLat % ))
+		// 	// save the result in the array, log array
+
+		// });
 	})
 };
 

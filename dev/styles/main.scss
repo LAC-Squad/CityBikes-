@@ -8,8 +8,29 @@ body {
     margin: 0 auto; 
     font-family: 'Roboto', sans-serif; 
     background-color: $colorLight;
-    color: #474747;
+ 
+
+
 }
+
+button,input, a{
+	transition:0.3s;
+}
+
+.background{
+position:relative;
+z-index:-9;
+}
+
+.imgContain {
+
+position: absolute;
+ 
+display:inline-block;
+
+
+}
+
 
 .wrapper {
     margin: 0 auto;
@@ -17,38 +38,56 @@ body {
     width: 80%;
 }  
 
-.imgWrapper {
-	position:absolute;
-	z-index:-999999;
-	opacity:.9;
-	height:100%;
-	width:100%;
+
+img {
+	border:1px solid black;
+	border:0;
+
 }
+
+
+
 
 h1, h2, h3 {
 	text-align:center;
+	padding-left:15px;
 	font-family: 'Montserrat', sans-serif;
 	color: $colorAccent;
 } 
 
 h1 {
+	//we can somehow include the animation up here if we have time//
+
+
 	margin: 1rem 0 0.75rem 0;
-	font-size:3rem;
+	font-size:5.7rem;
 	letter-spacing: 4px;
-	text-transform: uppercase;
+	
+
 }
+
 h3{
-	font-size:1rem;
+	font-size:2rem;
 	letter-spacing:4px;
 	margin-top:0;
 }
+span::after, span::before{
+	content: "↔	";
+	
+	font-size:2rem;
+
+
+	color: $colorDark;	
+	
+}
+
 header {
 	margin-bottom:$spacingBig;
 	display: flex;
 	flex-direction:column;
 	justify-content: center;
 	padding:1rem 0rem;
- 	background-color: $colorDark;
+   color: rgba(71,71,71, 0.9);
 }
 
 .container {
@@ -58,7 +97,7 @@ header {
 	align-items: center;
 }
 body{
-	overflow-x:hidden;
+	 overflow-x:hidden;
 }
 
 #actions{
@@ -171,6 +210,7 @@ input::placeholder{
 	// margin-right:$spacingSmall;
 	// margin-right:4px;
 }
+
 #mapBike,#mapCafe{
 	width:50%;
 	height:500px;
@@ -184,7 +224,7 @@ footer {
 	display:flex;
 	justify-content: center;
 	padding:$spacingSmall 0;
-	background-color: $colorDark;
+	// background-color: $colorDark;
 }
 
 .copyright {
@@ -195,9 +235,66 @@ footer {
 	color: $colorAccent;
 	font-weight:700;
 }
+.backgroundAnimate {
+ 
+
+
+ -webkit-animation-name: blink;
+ -webkit-animation-duration: 10s;
+ -webkit-animation-timing-function: linear;
+ -webkit-animation-delay: 0s;
+ -webkit-animation-iteration-count: 3;
+ -webkit-animation-direction: normal;
+ -webkit-animation-fill-mode: none;
+
+ animation-name: blink;
+ animation-duration: 10s;
+ animation-timing-function: linear;
+ animation-delay: 0s;
+ animation-iteration-count: 3;
+ animation-direction: normal;
+ animation-fill-mode: none;
+
+}
+
+@-webkit-keyframes blink {
+  0%{
+	opacity: 1;
+  }
+  25%{
+	opacity: 0;
+  }
+  50%{
+	opacity: 1;
+  }
+  75%{
+	opacity: 0;
+  }
+  100%{
+	opacity: 1;
+  }
+}
+
+@keyframes blink {
+  0%{
+	opacity: 1;
+  }
+  25%{
+	opacity: 0;
+  }
+  50%{
+	opacity: 1;
+  }
+  75%{
+	opacity: 0;
+  }
+  100%{
+	opacity: 1;
+  }
+}
+
 
 // TRANSITIONS
 
-button,input, a{
-	transition:0.3s;
-}
+
+  

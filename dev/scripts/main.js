@@ -80,28 +80,14 @@ citybikes.getUserLocation = function(res) {
 
 		$.when(citybikes.bikeLocation,citybikes.cafeLocation)
 		.then(function(bikedata,cafedata){
-<<<<<<< HEAD
-<<<<<<< HEAD
 			// console.log("DATAS",bikedata, cafedata)
 			// console.log("CITY?",bikedata[0].results[0].address_components[3].long_name)
 			citybikes.cityName1 = (bikedata[0].results[0].address_components[3].long_name);
-=======
-
 			console.log("DATAS",bikedata, cafedata)
-			console.log("CITY?",bikedata[0].results[0].address_components[4].long_name)
->>>>>>> 256f0142c642267815941b0e464a3992a060f269
-=======
-			  console.log("DATAS",bikedata, cafedata)
-=======
-			// console.log("DATAS",bikedata, cafedata)
-			// console.log("CITY?",bikedata[0].results[0].address_components[3].long_name)
-			citybikes.cityName1 = ("city [3]???",bikedata[0].results[0].address_components[3].long_name);
-
-// 			console.log("DATAS",bikedata, cafedata)
+			console.log("CITY [3]?",bikedata[0].results[0].address_components[3].long_name)
 			console.log("CITY [4]???",bikedata[0].results[0].address_components[4].long_name)
->>>>>>> c1b57937acaf2e45194ba1edccd7660b584cc860
 
->>>>>>> b1d1227342918468bdf3bb05c79c1bee481149cd
+
 			// Get Bikes
 			citybikes.bikeLat = bikedata[0].results[0].geometry.location.lat;
 			citybikes.bikeLng = bikedata[0].results[0].geometry.location.lng;
@@ -120,20 +106,9 @@ citybikes.getUserLocation = function(res) {
 			initMap();
 			initDM();
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-=======
->>>>>>> b1d1227342918468bdf3bb05c79c1bee481149cd
 
 			// console.log("WORKS???",citybikes.bikeLat, citybikes.bikeLng,"|",citybikes.cafeLat, citybikes.cafeLng);
-			citybikes.getBikeNetworks(citybikes.bikeLat,citybikes.bikeLng, citybikes.cityName);
-		
-					
-<<<<<<< HEAD
->>>>>>> 256f0142c642267815941b0e464a3992a060f269
-=======
->>>>>>> b1d1227342918468bdf3bb05c79c1bee481149cd
+			// citybikes.getBikeNetworks(citybikes.bikeLat,citybikes.bikeLng, citybikes.cityName);
 		});
 		// 
 	});	
@@ -148,43 +123,14 @@ citybikes.getBikeNetworks = function(){
 		}
 	});
 	$.when(bikeNetworks).done(function(data){
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> b1d1227342918468bdf3bb05c79c1bee481149cd
+
 		// citybikes.cityName1 = bikedata[0].results[0].address_components[4].long_name;
 
 		citybikes.bikeStations = data.networks;
 		citybikes.stationLng = citybikes.bikeStations[0].location.longitude;
 		citybikes.stationLat = citybikes.bikeStations[0].location.latitude;
 		// console.log("bike stations", citybikes.bikeStations);
-<<<<<<< HEAD
-=======
-=======
->>>>>>> b1d1227342918468bdf3bb05c79c1bee481149cd
-	// console.log("BIKES",data.networks);
-	// data.location.latitude
-	citybikes.bikeStations = data.networks;
-	// console.log("networks",data.networks)
-	citybikes.stationLng = citybikes.bikeStations[0].location.longitude;
-	citybikes.stationLat = citybikes.bikeStations[0].location.latitude;
-	// console.log(citybikes.stationLat, citybikes.stationLng);
-	// console.log("MATH",citybikes.bikeLat, citybikes.stationLat,"=",(citybikes.bikeLat % citybikes.stationLat));
-	// console.log("bike stations", citybikes.bikeStations);
-	//!!! Origins are TYPED locations, destinations are BIKES array, CAFE array, then get distance in KM, if nearby push to array or display marker for each.
 
-	// data.filter()
-		// citybikes.nearbyBikes = bikeNetworks.filter((function(){
-		// 	// if the difference between 'citybikes.bikeLat' and each item in the filter is greater than 0.1 &&
-		// 	// citybikes.bikeLng is greater than 0.1, THEN
-		// 	// if ((citybikes.bikeLat % ))
-		// 	// save the result in the array, log array
-
-		// });
-<<<<<<< HEAD
->>>>>>> 256f0142c642267815941b0e464a3992a060f269
-=======
->>>>>>> b1d1227342918468bdf3bb05c79c1bee481149cd
 	})
 };
 
@@ -243,13 +189,15 @@ function initMap() {
 	    zoom: twoZoom
 	});
 	// console.log(citybikes.bikeStations);
+	    var markerOne = new google.maps.Marker({
+		    position: citybikes.myLatLong,
+		    map: mapBike,
+		    title: citybikes.userInputBike,
+		    icon: 'icons/bikeMarker.svg'
+	    })
+	
 	citybikes.bikeStations.forEach(function(item){
-		    var markerOne = new google.maps.Marker({
-			    position: citybikes.myLatLong,
-			    map: mapBike,
-			    title: citybikes.userInputBike,
-			    icon: 'icons/bikeMarker.svg'
-		    })
+
 		// console.log("????", item);
 	    var marker = new google.maps.Marker({
 	    	
@@ -281,81 +229,81 @@ function initMap() {
 
 
 // DISTANCE MATRIX
-function initDM() {
-       var bounds = new google.maps.LatLngBounds;
-       var markersArray = [];
+// function initDM() {
+//        var bounds = new google.maps.LatLngBounds;
+//        var markersArray = [];
 
-       var origin1 = citybikes.myLatLong;
-       var origin2 = citybikes.cafeLatLong;
-       var destinationA = citybikes.bikeStations;
-       var destinationB = [];
+//        var origin1 = citybikes.myLatLong;
+//        var origin2 = citybikes.cafeLatLong;
+//        var destinationA = citybikes.bikeStations;
+//        var destinationB = [];
 
-       var destinationIcon = 'https://chart.googleapis.com/chart?' +
-           'chst=d_map_pin_letter&chld=D|FF0000|000000';
-       var originIcon = 'https://chart.googleapis.com/chart?' +
-           'chst=d_map_pin_letter&chld=O|FFFF00|000000';
-       var map = new google.maps.Map(document.getElementById('map'), {
-         center: {lat: 55.53, lng: 9.4},
-         zoom: 10
-       });
-       var geocoder = new google.maps.Geocoder;
+//        var destinationIcon = 'https://chart.googleapis.com/chart?' +
+//            'chst=d_map_pin_letter&chld=D|FF0000|000000';
+//        var originIcon = 'https://chart.googleapis.com/chart?' +
+//            'chst=d_map_pin_letter&chld=O|FFFF00|000000';
+//        var map = new google.maps.Map(document.getElementById('map'), {
+//          center: {lat: 55.53, lng: 9.4},
+//          zoom: 10
+//        });
+//        var geocoder = new google.maps.Geocoder;
 
-       var service = new google.maps.DistanceMatrixService;
-       service.getDistanceMatrix({
-         origins: [origin1, origin2],
-         destinations: [destinationA, destinationB],
-         travelMode: 'DRIVING',
-         unitSystem: google.maps.UnitSystem.METRIC,
-         avoidHighways: false,
-         avoidTolls: false
-       }, function(response, status) {
-         if (status !== 'OK') {
-           alert('Error was: ' + status);
-         } else {
-           var originList = response.originAddresses;
-           var destinationList = response.destinationAddresses;
-           var outputDiv = document.getElementById('output');
-           outputDiv.innerHTML = '';
-           deleteMarkers(markersArray);
+//        var service = new google.maps.DistanceMatrixService;
+//        service.getDistanceMatrix({
+//          origins: [origin1, origin2],
+//          destinations: [destinationA, destinationB],
+//          travelMode: 'DRIVING',
+//          unitSystem: google.maps.UnitSystem.METRIC,
+//          avoidHighways: false,
+//          avoidTolls: false
+//        }, function(response, status) {
+//          if (status !== 'OK') {
+//            alert('Error was: ' + status);
+//          } else {
+//            var originList = response.originAddresses;
+//            var destinationList = response.destinationAddresses;
+//            var outputDiv = document.getElementById('output');
+//            outputDiv.innerHTML = '';
+//            deleteMarkers(markersArray);
 
-           var showGeocodedAddressOnMap = function(asDestination) {
-             var icon = asDestination ? destinationIcon : originIcon;
-             return function(results, status) {
-               if (status === 'OK') {
-                 map.fitBounds(bounds.extend(results[0].geometry.location));
-                 markersArray.push(new google.maps.Marker({
-                   map: mapBike,
-                   position: results[0].geometry.location,
-                   icon: icon
-                 }));
-               } else {
-                 alert('Geocode was not successful due to: ' + status);
-               }
-             };
-           };
+//            var showGeocodedAddressOnMap = function(asDestination) {
+//              var icon = asDestination ? destinationIcon : originIcon;
+//              return function(results, status) {
+//                if (status === 'OK') {
+//                  map.fitBounds(bounds.extend(results[0].geometry.location));
+//                  markersArray.push(new google.maps.Marker({
+//                    map: mapBike,
+//                    position: results[0].geometry.location,
+//                    icon: icon
+//                  }));
+//                } else {
+//                  alert('Geocode was not successful due to: ' + status);
+//                }
+//              };
+//            };
 
-           for (var i = 0; i < originList.length; i++) {
-             var results = response.rows[i].elements;
-             geocoder.geocode({'address': originList[i]},
-                 showGeocodedAddressOnMap(false));
-             for (var j = 0; j < results.length; j++) {
-               geocoder.geocode({'address': destinationList[j]},
-                   showGeocodedAddressOnMap(true));
-               outputDiv.innerHTML += originList[i] + ' to ' + destinationList[j] +
-                   ': ' + results[j].distance.text + ' in ' +
-                   results[j].duration.text + '<br>';
-             }
-           }
-         }
-       });
-     }
+//            for (var i = 0; i < originList.length; i++) {
+//              var results = response.rows[i].elements;
+//              geocoder.geocode({'address': originList[i]},
+//                  showGeocodedAddressOnMap(false));
+//              for (var j = 0; j < results.length; j++) {
+//                geocoder.geocode({'address': destinationList[j]},
+//                    showGeocodedAddressOnMap(true));
+//                outputDiv.innerHTML += originList[i] + ' to ' + destinationList[j] +
+//                    ': ' + results[j].distance.text + ' in ' +
+//                    results[j].duration.text + '<br>';
+//              }
+//            }
+//          }
+//        });
+//      }
 
-     function deleteMarkers(markersArray) {
-       for (var i = 0; i < markersArray.length; i++) {
-         markersArray[i].setMap(null);
-       }
-       markersArray = [];
-     }
+//      function deleteMarkers(markersArray) {
+//        for (var i = 0; i < markersArray.length; i++) {
+//          markersArray[i].setMap(null);
+//        }
+//        markersArray = [];
+//      }
 
 
 

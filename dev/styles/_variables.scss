@@ -1,8 +1,8 @@
-$colorAccent: #99d5c8;
-$colorLight:  #f3f4e9;
-$colorDark: #474747;
+$colorAccent: #99d5c8;	// rgba(153,213,200,1)
+$colorLight:  #f3f4e9;	// rgba(243,244,200,1)
+$colorDark: #474747;	// rgba(71,71,71,1)
 $boxShadowDark1: 8px 8px 0px $colorDark;
-$spacingSmall: 1.5rem;
-$spacingBig: 3rem;
+$spacingSmall: 1rem;
+$spacingBig: 2.5rem;
 $background:  linear-gradient(rgba(243,244,233, 0.2), rgba(77, 77, 77, 0.2)),
                 rgba(243,244,233, .6) url('http://i.imgur.com/OxYRdWw.png') repeat center fixed;

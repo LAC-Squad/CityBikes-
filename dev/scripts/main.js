@@ -81,9 +81,16 @@ citybikes.getUserLocation = function(res) {
 			// Get Cafe
 			citybikes.cafeLat = cafedata[0].results[0].geometry.location.lat;
 			citybikes.cafeLng = cafedata[0].results[0].geometry.location.lng;
+			citybikes.cityName2 = (cafedata[0].results[0].address_components[3].long_name).toLowerCase();
+			citybikes.cityName2B = (cafedata[0].results[0].address_components[4].long_name).toLowerCase();
 
 			citybikes.getBikeNetworksStations(citybikes.cityName1);
 			citybikes.getBikeNetworksStations(citybikes.cityName1B);
+			citybikes.getCafesNearby(citybikes.cityName2);
+			citybikes.getCafesNearby(citybikes.cityName2);
+			citybikes.getCoffeeShops(citybikes.cityName1);
+			// citybikes.getCafeCity = [citybikes.cafeLat, cafe.Lng];
+			// citybikes.getCafeCityJSON = JSON.stringify(arr);
 
 			//map thing
 			// console.log("WORKS???",citybikes.bikeLat, citybikes.bikeLng,"|",citybikes.cafeLat, citybikes.cafeLng);
@@ -135,17 +142,20 @@ citybikes.getBikeNetworksStations = function(city){
 // 	})
 // };
 
-citybikes.getCoffeeShops = function (lat,lng) {
+citybikes.getCoffeeShops = function(location) {
+	// var cafe = {lat: 43.6657, lng: -79.3855}
+
 	return $.ajax({
 		url: 'https://api.foursquare.com/v2/venues/explore',
 		method: 'GET',
 		dataType: 'json',
 		data: {
-			ll: lat, lng,
+			near: location,
+			radius: 500,
 			v: 20170310,
 			client_id: 'HNQJUKZ0TNYSMRZ2N2CNAUZZFQFDJVIBBB0BZ3RG2XAJD43G',
 			client_secret: 'HZKPB3D5EANIS5PHQK5ZYLRQFDVE04CQ5KBSUZTK5UCT3JH2',
-			section: 'coffee'
+			section: 'coffee',
 		}
 	});
 };
@@ -154,7 +164,7 @@ citybikes.coffeeShops = citybikes.getCoffeeShops();
 
 
 $.when(citybikes.coffeeShops).done(function(res){
-// console.log("This is happening", res);
+console.log("This is happening", res);
 })
 
 // citybikes.coffeeShops.response.groups["0"].items["0"].venue.location.lat
@@ -206,11 +216,8 @@ function initMap() {
 	    map: mapCafe,
 	    title: citybikes.userInputCafe,
 	    icon: 'icons/coffeeMarker.svg'
-    })
-
-
+    });
 };
-
 
 
 // DISTANCE MATRIX

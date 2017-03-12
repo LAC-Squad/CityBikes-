@@ -195,6 +195,19 @@ function initMap() {
 	// Two Maps Attempt
 	//Bike Map
 	var twoZoom =16;
+
+    // Cafe Map
+    mapCafe = new google.maps.Map(document.getElementById('mapCafe'), {
+	    center: citybikes.cafeLatLong,
+	    zoom: twoZoom
+	});
+    var markerTwo = new google.maps.Marker({
+	    position: citybikes.cafeLatLong,
+	    map: mapCafe,
+	    title: citybikes.userInputCafe,
+	    icon: 'icons/coffeeMarker.svg'
+    });
+	// Bike Map
 	mapBike = new google.maps.Map(document.getElementById('mapBike'), {
 	    center: citybikes.myLatLong,
 	    zoom: twoZoom
@@ -221,17 +234,7 @@ function initMap() {
 	    });
 	});
 
-    // Cafe Map
-    mapCafe = new google.maps.Map(document.getElementById('mapCafe'), {
-	    center: citybikes.cafeLatLong,
-	    zoom: twoZoom
-	});
-    var markerTwo = new google.maps.Marker({
-	    position: citybikes.cafeLatLong,
-	    map: mapCafe,
-	    title: citybikes.userInputCafe,
-	    icon: 'icons/coffeeMarker.svg'
-    });
+
 };
 
 

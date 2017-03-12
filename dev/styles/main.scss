@@ -11,7 +11,7 @@ body {
 	height:100%;
 	text-transform: lowercase;
 }
-button,input, a{
+button,input, a {
 	transition:0.9s;
 
 }
@@ -81,7 +81,7 @@ i {
 	margin:0 auto;
 	color:$colorDark;
 }
-.instructionWrapper{
+.instructionWrapper {
 	display:flex;
 	border:1px solid $colorDark;
 	background:$colorLight;
@@ -89,7 +89,7 @@ i {
 	flex-direction:column;
 	width:100%;
 }
-.steps{
+.steps {
 	text-align: center;
 	text-transform: lowercase;
 }
@@ -101,7 +101,7 @@ svg {
 }
 .wrapper {
     margin: 0 auto;
-    height:100vh;
+    height:90vh;
     max-width: 1400px;
     padding:$spacingSmall;
     background: url('http://i.imgur.com/9QLtYYK.png') repeat center fixed;  
@@ -131,10 +131,10 @@ h1 {
 		}
 	}
 }
-h1:hover{
+h1:hover {
 	transform:translateY(-0.5rem);
 }
-h3{
+h3 {
 	font-size:2rem;
 	letter-spacing:4px;
 	margin-top:0;
@@ -160,7 +160,7 @@ header {
 	justify-content: center;
 	align-items: center;
 }
-body{
+body {
 	 overflow-x:hidden;
 }
 #actions {
@@ -187,8 +187,6 @@ button {
   padding: 20px;
   background: #000;
   text-transform: lowercase;
-
-
   border: 1px solid #1a1a1a;
 }
 .inputContainer {
@@ -259,6 +257,14 @@ input:hover::placeholder {
 		padding:5px;
 	}
 }
+#go:focus {
+	background-color:lighten($colorDark, 7%);
+	background-image: url(../../icons/bikeBlack.png);
+	background-position: center;
+	background-size: 30%;
+	background-repeat: no-repeat;
+	color: transparent;	
+}
 svg {
 	width:50%;
 	text-align:center;
@@ -306,9 +312,15 @@ input:-webkit-autofill {
 	text-align: center;
 	color:$colorDark;
 	font-size:1.3rem;
+	a {
+		text-decoration: none;
+	}
 }
 .copyright:hover {
 	color: $colorAccent;
+	a:hover {
+		color: $colorAccent;
+	}
 }
 .backgroundAnimate {
 	-webkit-animation-name: blink;
@@ -361,7 +373,6 @@ footer {
 	display:inline-flex;
 	justify-content:center;
 	margin:0 auto;
-
 	padding:25px;
 	border-right:1px dashed $colorDark;
 	border-left:1px dashed $colorDark;
@@ -370,13 +381,13 @@ footer {
  li {
  	list-style:none;
  	padding:15px;
-
  	a {
  		color:$colorDark;
- 		
-
  	}
-	}
+ 	a:hover {
+ 		color: $colorLight;
+ 	}
+}
 
 
 

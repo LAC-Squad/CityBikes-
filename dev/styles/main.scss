@@ -8,12 +8,17 @@ body {
 	margin: 0 auto; 
 	font-family: 'Roboto', sans-serif; 
 	background:$colorLight;
+
+	background: linear-gradient(to right,rgba(244,244,233,1),rgba(244,244,233,0.7),rgba(244,244,233,0.7),rgba(244,244,233,1)), url('../../icons/grid1.png') repeat center fixed;  
+
 	height:100%;
 	text-transform: lowercase;
 }
 button,input, a {
 	transition:0.9s;
-
+}
+a{
+	text-decoration: none;
 }
 .wrapBorder {
 	width:100%;
@@ -42,17 +47,7 @@ main {
 	
 
 }
-i {
-	transition: all 0.3s ease;
-	border:2px solid $colorAccent;
-	border-radius:50%;
-	padding:20px 30px;
-	margin:0 auto;
-	background: $colorAccent;
-	&:hover{
-		background: $colorDark;
-	}
-}
+
 #begin {
 	margin:auto;
 }
@@ -99,12 +94,18 @@ svg {
 	margin:0 auto;
 	display:flex;
 }
+// .bgOverlay{
+// 	z-index:-999;
+// 	position:absolute;
+// 	top:0;right:0;bottom:0;left:0;
+// 	background: linear-gradient(rgba(244,244,233,0.6),rgba(244,244,233,0.6)), url('../../icons/grid1.png') repeat center fixed;  
+
+// }
 .wrapper {
     margin: 0 auto;
-    height:90vh;
-    max-width: 1400px;
+    max-width: 1200px;
     padding:$spacingSmall;
-    background: url('http://i.imgur.com/9QLtYYK.png') repeat center fixed;  
+    background: linear-gradient(rgba(244,244,233,0.6),rgba(244,244,233,0.6)), url('../../icons/grid1.png') repeat center fixed;  
 }  
 h1, h2, h3 {
 	text-align:center;
@@ -167,6 +168,7 @@ body {
 	display:flex;
 	flex-direction:column;
 	width:100%;
+	margin-bottom:$spacingSmall;
 }
 button {
 	color: $colorLight;
@@ -199,7 +201,7 @@ button {
 	justify-content: center;
 	flex-wrap:no-wrap;
 	// height: 3rem;
-	margin-bottom:$spacingBig;
+
 	*:last-child{
 		margin-right:0;
 	}
@@ -215,6 +217,7 @@ button {
 	font-weight:700;
 }
 input::placeholder {
+	transition:all 1s ease;
 	text-transform: lowercase;
 	color: $colorDark;
 }
@@ -222,6 +225,11 @@ input::placeholder {
 	color: $colorDark;
 }
 input:hover::placeholder {
+	color: $colorDark;
+}
+input:focus::placeholder {
+	transition:all 0.2s ease;
+	opacity:0;
 	color: $colorDark;
 }
 #getBike, #getCafe {
@@ -278,9 +286,9 @@ svg {
 .results {
 	position: relative;
 	width: 100%;
-	background-color: $colorLight;
+	// background-color: $colorLight;
 	// border: 4px solid $colorAccent;
-	// margin-bottom:$spacingBig;
+	margin-bottom:$spacingBig;
 	img{
 		max-width:100%;
 	}
@@ -302,6 +310,8 @@ svg {
 	width:50%;
 	height:30rem;
 	border:4px solid $colorAccent;
+	background-color: $colorLight;
+
 }
 input:-webkit-autofill {
     box-shadow: 0 0 0px 1000px $colorLight inset !important;
@@ -370,17 +380,18 @@ footer {
             
 // @keyframes blink {
 .socialMedia {
-	display:inline-flex;
-	justify-content:center;
+	display:flex;
+	justify-content:space-around;
 	margin:0 auto;
-	padding:25px;
+	padding:1rem;
 	border-right:1px dashed $colorDark;
 	border-left:1px dashed $colorDark;
 
 }
  li {
+	margin:0.5em;
  	list-style:none;
- 	padding:15px;
+ 	display:flex;
  	a {
  		color:$colorDark;
  	}
@@ -389,6 +400,25 @@ footer {
  	}
 }
 
+i {
+	display:flex !important;
+	justify-content: center;
+	transition: all 0.3s ease;
+	border:2px solid $colorAccent;
+	border-radius:50%;
+	height:60px;
+	width:60px;
+	padding:0;
+	margin:0 auto;
+	background: $colorAccent;
+	&:hover{
+		background: $colorDark;
+	}
+	&:before{
+
+		margin:auto;
+	}
+}
 
 
   

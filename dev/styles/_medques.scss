@@ -15,30 +15,23 @@
 			margin-right:0;
 		}
 	}
+	#actions {
+
+		margin-bottom:0;
+	}
 	#getBike, #getCafe {
 		margin-right:0;
 		margin-bottom:$spacingSmall;
 		flex-grow:1;
-		background-color: $colorLight;
-		border:3px solid $colorAccent;
-		color: $colorAccent;
+
 		&:hover {
-			background-color:lighten($colorAccent, 7%);
-			color: $colorDark;
+
 		}
 	}
 	#go {
-		background-color: $colorAccent;
-		color: $colorLight;
-		color: $colorLight;	
 		&:hover {
-			cursor:pointer;
-			background-color:lighten($colorDark, 7%);
-			background-image: url(../../icons/bikeBlack.png);
-			background-position: center;
-			background-size: 10%;
-			background-repeat: no-repeat;
-			color: transparent;
+
+			background-size: 10%
 		}
 		img {
 			width:25%;

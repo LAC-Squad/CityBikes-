@@ -97,9 +97,9 @@ citybikes.getBikeNetworksStations = function(city){
 		}
 	});
 	$.when(bikeNetworksStations).done(function(result){
-		console.log("RESULT",result);
+		// console.log("RESULT",result);
 		citybikes.bikeStations = result.network.stations; //latitude and longitude are accessible from this point
-		console.log(citybikes.bikeStations);
+		// console.log(citybikes.bikeStations);
 		initMap();
 	})
 };
@@ -121,6 +121,7 @@ citybikes.getCoffeeShops = function(coffee) {
 		}
 	}).then(function(coffeeShops){
 		console.log("coffee",coffeeShops)
+		citybikes.cafeLocations = coffeeShops.results;
 	});
 };
 
@@ -142,14 +143,27 @@ function initMap() {
 	    position: citybikes.cafeLatLong,
 	    map: mapCafe,
 	    title: citybikes.userInputCafe,
-	    icon: 'icons/coffeeMarker.svg'
+	    // icon: 'icons/coffeeMarker.svg'
+    });
+    // for each cafe, place a marker
+    citybikes.cafeLocations.forEach(function(item){
+    	// console.log("ITEM:", item);
+        var marker = new google.maps.Marker({	
+            position: {
+            	lat:item.geometry.location.lat,
+            	lng:item.geometry.location.lng
+            },
+            map: mapCafe,
+            title: item.name,
+            icon:'icons/coffeeMarker.svg'
+        });
     });
 	// Bike Map
 	mapBike = new google.maps.Map(document.getElementById('mapBike'), {
 	    center: citybikes.myLatLong,
 	    zoom: twoZoom
 	});
-	console.log(citybikes.bikeStations);
+	// console.log(citybikes.bikeStations);
     var markerOne = new google.maps.Marker({
 	    position: citybikes.myLatLong,
 	    map: mapBike,
@@ -158,7 +172,7 @@ function initMap() {
     })
 	// For each bike station, place a marker
 	citybikes.bikeStations.forEach(function(item){
-		console.log("ITEM:", item);
+		// console.log("ITEM:", item);
 	    var marker = new google.maps.Marker({	
 	        position: {
 	        	lat:item.latitude,
@@ -170,6 +184,7 @@ function initMap() {
 
 	    });
 	});
+
 };
 
 $(function(){

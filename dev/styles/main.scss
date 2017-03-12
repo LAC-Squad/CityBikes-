@@ -13,6 +13,7 @@ body {
 }
 button,input, a{
 	transition:0.9s;
+
 }
 .wrapBorder {
 	width:100%;
@@ -56,20 +57,24 @@ i {
 	margin:auto;
 }
 #instructions {
-	width:100%;
+	width:50%;
 	margin:0;
 	padding:20px;
-	line-height:20px;
+	line-height:10px;
+
 	display:flex;
 	justify-content: center;
 	p{
 		display:inline-block;
+		text-transform: lowercase;
 		margin:0 auto;
+		padding:0;
 		text-align: center;
 	}
 }
 #start {
 	display:none;
+	text-transform: lowercase;
 	padding:$spacingSmall;
 	border-bottom:3px solid $colorDark;
 	width:100%;
@@ -78,12 +83,15 @@ i {
 }
 .instructionWrapper{
 	display:flex;
+	border:1px solid $colorDark;
+	background:$colorLight;
 	justify-content: center;
 	flex-direction:column;
 	width:100%;
 }
 .steps{
 	text-align: center;
+	text-transform: lowercase;
 }
 svg {
 	border-bottom: 1px dashed $colorDark;
@@ -167,6 +175,7 @@ button {
 #searchInput {
 	text-align: center;
 	padding:1rem 2rem;
+	text-transform: lowercase;
 	width:100%;
 	// border: 4px solid $colorAccent;
 	color: $colorLight;
@@ -177,6 +186,7 @@ button {
   margin: 100px auto 0 auto;
   padding: 20px;
   background: #000;
+  text-transform: lowercase;
 
 
   border: 1px solid #1a1a1a;
@@ -207,6 +217,7 @@ button {
 	font-weight:700;
 }
 input::placeholder {
+	text-transform: lowercase;
 	color: $colorDark;
 }
 #getBike:focus, #getCafe:focus {
@@ -217,6 +228,7 @@ input:hover::placeholder {
 }
 #getBike, #getCafe {
 	margin-right:$spacingSmall;
+	text-transform: lowercase;
 	flex-grow:1;
 	background-color: $colorAccent;
 	border:3px solid $colorAccent;
@@ -229,7 +241,8 @@ input:hover::placeholder {
 }
 #go {
 	background-color: $colorAccent;
-	color: $colorDark;	
+	color: $colorDark;
+	text-transform: lowercase;	
 	&:hover {
 		cursor:pointer;
 		background-color:lighten($colorDark, 7%);
@@ -334,6 +347,7 @@ footer {
 	// position:absolute;
 	// bottom:0;left:0;right:0;
 	height:15vh;
+	text-transform:lowercase;
 	background:$colorLight;
 	padding:1rem 0rem;
 	display:flex;

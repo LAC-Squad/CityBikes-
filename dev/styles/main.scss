@@ -1,6 +1,7 @@
 
 @import 'setup';
 @import 'variables';
+@import 'medques';
 // @import 'medques';
 
 @import url('https://fonts.googleapis.com/css?family=Montserrat|Roboto');
@@ -326,6 +327,7 @@ input:-webkit-autofill {
 footer {
 	// position:absolute;
 	// bottom:0;left:0;right:0;
+	height:15vh;
 	background:$background;
 	padding:1rem 0rem;
 	display:flex;
@@ -335,27 +337,27 @@ footer {
 }
             
 // @keyframes blink {
-//   0%{
-// 	opacity: 1;
-//   }
-//   25%{
-// 	opacity: 0;
-//   }
-//   50%{
-// 	opacity: 1;
-//   }
-//   75%{
-// 	opacity: 0;
-//   }
-//   100%{
-// 	opacity: 1;
-//   }
+.socialMedia {
+	display:inline-flex;
+	justify-content:center;
+	margin:0 auto;
 
+	padding:25px;
+	border-right:1px dashed $colorDark;
+	border-left:1px dashed $colorDark;
 
+}
+ li {
+ 	list-style:none;
+ 	padding:15px;
 
-// button flex
+ 	a {
+ 		color:$colorDark;
+ 		
+
+ 	}
+	}
 
 
 
   
-@import 'medques';

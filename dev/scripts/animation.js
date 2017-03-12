@@ -1,33 +1,41 @@
 
- $(function(){
-//Functions to get random coordinates for background icons
-  getRandomArray = function(array){
-    var randomArrayItem = Math.floor(Math.random() * array.length);
-    return array[randomArrayItem];
-  }
 
-  function randomNumber (n) {
-      return Math.floor(Math.random() * n);
-    };
+    $('#begin').click(function () {
+    $('#legend #start').slideToggle({
+      direction: "down"
+    }, 100);
+    $(this).toggleClass('clientsClose');
+  }); // end click
 
-  function randomStyle(element){
-    var cssOne = randomNumber(100);
-    var cssTwo = randomNumber(100);
-    var styles = {left: cssOne + "%", top: cssTwo + "%"};
+//  $(function(){
+// //Functions to get random coordinates for background icons
+//   getRandomArray = function(array){
+//     var randomArrayItem = Math.floor(Math.random() * array.length);
+//     return array[randomArrayItem];
+//   }
+
+//   function randomNumber (n) {
+//       return Math.floor(Math.random() * n);
+//     };
+
+//   function randomStyle(element){
+//     var cssOne = randomNumber(100);
+//     var cssTwo = randomNumber(100);
+//     var styles = {left: cssOne + "%", top: cssTwo + "%"};
      
-     element.css(styles);
+//      element.css(styles);
       
     
 
-  };
+//   };
 
-  var divImageArray = $('.background > div.imgContain');
+//   var divImageArray = $('.background > div.imgContain');
 
-divImageArray.each(function(){
-  randomStyle($(this));
+// divImageArray.each(function(){
+//   randomStyle($(this));
 
-});
- });
+// });
+//  });
 
 // $(function() {
 //   var moveLeft = 20;

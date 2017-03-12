@@ -1,26 +1,4 @@
-
-
-
-//generates today's date //
-let today = new Date();
-let dd = today.getDate();
-let mm = today.getMonth()+1; //January is 0!
-let yyyy = today.getFullYear();
-
-if(dd<10) {
-   dd='0'+dd
-}
-
-if(mm<10) {
-   mm='0'+mm
-}
-
-today = yyyy+mm+dd;
 let citybikes = {};
-// citybikes.client_ID = "HNQJUKZ0TNYSMRZ2N2CNAUZZFQFDJVIBBB0BZ3RG2XAJD43G;"
-// citybikes.client_secret = "HZKPB3D5EANIS5PHQK5ZYLRQFDVE04CQ5KBSUZTK5UCT3JH2";
-// citybikes.version = 20170307;
-// citybikes.url = "https://api.foursquare.com/v2/venues/explore"
 
 citybikes.googleMapsKey = "AIzaSyCrXerr7xHcFxr4OW7EmOdDnNBaHgLzXIQ";
 
@@ -66,7 +44,6 @@ citybikes.getUserLocation = function(res) {
 			// console.log("DATAS",bikedata, cafedata)
 			// console.log("CITY?",bikedata[0].results[0].address_components[3].long_name)
 
-
 			console.log("DATAS",bikedata, cafedata)
 			console.log("CITY [3]?",bikedata[0].results[0].address_components[3].long_name)
 			console.log("CITY [4]???",bikedata[0].results[0].address_components[4].long_name)
@@ -81,14 +58,18 @@ citybikes.getUserLocation = function(res) {
 			// Get Cafe
 			citybikes.cafeLat = cafedata[0].results[0].geometry.location.lat;
 			citybikes.cafeLng = cafedata[0].results[0].geometry.location.lng;
-			citybikes.cityName2 = (cafedata[0].results[0].address_components[3].long_name).toLowerCase();
-			citybikes.cityName2B = (cafedata[0].results[0].address_components[4].long_name).toLowerCase();
-
+			// citybikes.cityName2 = (cafedata[0].results[0].address_components[3].long_name).toLowerCase();
+			// citybikes.cityName2B = (cafedata[0].results[0].address_components[4].long_name).toLowerCase();
+			citybikes.cafeString = [citybikes.cafeLat, citybikes.cafeLng].toString();
+			// citybikes.cafeString = (citybikes.cafeLat + "," + citybikes.cafeLng);
+			console.log("Coffee String", citybikes.cafeString);
+			
 			citybikes.getBikeNetworksStations(citybikes.cityName1);
 			citybikes.getBikeNetworksStations(citybikes.cityName1B);
-			citybikes.getCafesNearby(citybikes.cityName2);
-			citybikes.getCafesNearby(citybikes.cityName2);
-			citybikes.getCoffeeShops(citybikes.cityName1);
+			citybikes.getCoffeeShops();
+			// citybikes.getCafesNearby(citybikes.cityName2);
+			// citybikes.getCafesNearby(citybikes.cityName2);
+			// citybikes.getCoffeeShops(citybikes.cityName1);
 			// citybikes.getCafeCity = [citybikes.cafeLat, cafe.Lng];
 			// citybikes.getCafeCityJSON = JSON.stringify(arr);
 
@@ -121,71 +102,27 @@ citybikes.getBikeNetworksStations = function(city){
 		console.log(citybikes.bikeStations);
 		initMap();
 	})
-}
-
-// citybikes.getBikeNetworks = function(){
-// 	var bikeNetworks = $.ajax({
-// 		url:'http://api.citybik.es/v2/networks',
-// 		method:'GET',
-// 		dataType: 'json',
-// 		data:{
-// 		}
-// 	});
-// 	$.when(bikeNetworks).done(function(data){
-
-// 		// citybikes.cityName1 = bikedata[0].results[0].address_components[4].long_name;
-
-// 		// citybikes.stationLng = citybikes.bikeStations[0].location.longitude;
-// 		// citybikes.stationLat = citybikes.bikeStations[0].location.latitude;
-// 		// console.log("bike stations", citybikes.bikeStations);
-
-// 	})
-// };
-
-citybikes.getCoffeeShops = function(location, coffee) {
-	// var cafe = {lat: 43.6657, lng: -79.3855}
-console.log("hey", location);
-	return $.ajax({
-		url: 'http://proxy.hackeryou.com',
-		method: 'GET',
-		dataType: 'jsonp',
-
-		data: {
-			reqUrl:'https://api.foursquare.com/v2/venues/explore',
-			params: {
-			
-			client_id: 'HNQJUKZ0TNYSMRZ2N2CNAUZZFQFDJVIBBB0BZ3RG2XAJD43G',
-			client_secret: 'HZKPB3D5EANIS5PHQK5ZYLRQFDVE04CQ5KBSUZTK5UCT3JH2',
-
-			v: 20170310,
-
-			near: location,
-			query: coffee,
-			limit:10,
-		
-	}
-			
-				}
-			
-				
-			
-		
-		
-	});
 };
 
-
-citybikes.coffeeShops = citybikes.getCoffeeShops();
-
-
-$.when(citybikes.coffeeShops).done(function(res){
-console.log("This is happening", res);
-})
-
-// citybikes.coffeeShops.response.groups["0"].items["0"].venue.location.lat
-// citybikes.coffeeShops.response.groups["0"].items["0"].venue.location.lng
-
-// .response.suggestedRadius
+citybikes.getCoffeeShops = function(coffee) {
+	citybikes.getCoffeeLocations = $.ajax({
+		url: 'http://proxy.hackeryou.com',
+		method: 'GET',
+		dataType: 'json',
+		data: {
+			reqUrl: 'https://maps.googleapis.com/maps/api/place/nearbysearch/json',
+			params: {
+				key: 'AIzaSyB0nAY9VpAN-y391bAkKEaVLiNEFUay0nw',
+				location: citybikes.cafeString,
+				// location: '43.6425662,-79.3870568',
+				radius: 500,
+				type: 'cafe'
+			}
+		}
+	}).then(function(coffeeShops){
+		console.log("coffee",coffeeShops)
+	});
+};
 
 var map;
 function initMap() {
@@ -233,89 +170,7 @@ function initMap() {
 
 	    });
 	});
-
-
 };
-
-
-// DISTANCE MATRIX
-// function initDM() {
-//        var bounds = new google.maps.LatLngBounds;
-//        var markersArray = [];
-
-//        var origin1 = citybikes.myLatLong;
-//        var origin2 = citybikes.cafeLatLong;
-//        var destinationA = citybikes.bikeStations;
-//        var destinationB = [];
-
-//        var destinationIcon = 'https://chart.googleapis.com/chart?' +
-//            'chst=d_map_pin_letter&chld=D|FF0000|000000';
-//        var originIcon = 'https://chart.googleapis.com/chart?' +
-//            'chst=d_map_pin_letter&chld=O|FFFF00|000000';
-//        var map = new google.maps.Map(document.getElementById('map'), {
-//          center: {lat: 55.53, lng: 9.4},
-//          zoom: 10
-//        });
-//        var geocoder = new google.maps.Geocoder;
-
-//        var service = new google.maps.DistanceMatrixService;
-//        service.getDistanceMatrix({
-//          origins: [origin1, origin2],
-//          destinations: [destinationA, destinationB],
-//          travelMode: 'DRIVING',
-//          unitSystem: google.maps.UnitSystem.METRIC,
-//          avoidHighways: false,
-//          avoidTolls: false
-//        }, function(response, status) {
-//          if (status !== 'OK') {
-//            alert('Error was: ' + status);
-//          } else {
-//            var originList = response.originAddresses;
-//            var destinationList = response.destinationAddresses;
-//            var outputDiv = document.getElementById('output');
-//            outputDiv.innerHTML = '';
-//            deleteMarkers(markersArray);
-
-//            var showGeocodedAddressOnMap = function(asDestination) {
-//              var icon = asDestination ? destinationIcon : originIcon;
-//              return function(results, status) {
-//                if (status === 'OK') {
-//                  map.fitBounds(bounds.extend(results[0].geometry.location));
-//                  markersArray.push(new google.maps.Marker({
-//                    map: mapBike,
-//                    position: results[0].geometry.location,
-//                    icon: icon
-//                  }));
-//                } else {
-//                  alert('Geocode was not successful due to: ' + status);
-//                }
-//              };
-//            };
-
-//            for (var i = 0; i < originList.length; i++) {
-//              var results = response.rows[i].elements;
-//              geocoder.geocode({'address': originList[i]},
-//                  showGeocodedAddressOnMap(false));
-//              for (var j = 0; j < results.length; j++) {
-//                geocoder.geocode({'address': destinationList[j]},
-//                    showGeocodedAddressOnMap(true));
-//                outputDiv.innerHTML += originList[i] + ' to ' + destinationList[j] +
-//                    ': ' + results[j].distance.text + ' in ' +
-//                    results[j].duration.text + '<br>';
-//              }
-//            }
-//          }
-//        });
-//      }
-
-//      function deleteMarkers(markersArray) {
-//        for (var i = 0; i < markersArray.length; i++) {
-//          markersArray[i].setMap(null);
-//        }
-//        markersArray = [];
-//      }
-
-
 
 $(function(){
 	citybikes.init();

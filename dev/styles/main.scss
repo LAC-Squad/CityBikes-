@@ -8,9 +8,8 @@
 body {
 	margin: 0 auto; 
 	font-family: 'Roboto', sans-serif; 
-background: linear-gradient(rgba(243,244,233, 0.8), rgba(77, 77, 77, 0.2)),
-                rgba(243,244,233, .6) url('http://i.imgur.com/OxYRdWw.png') repeat center fixed;
 
+background: $colorLight
 	
 }
 
@@ -22,7 +21,7 @@ button,input, a{
 	width:100%;
 	margin:0 auto;
 	text-align:center;
-	padding:25px 50px;
+
 	background-color: $colorLight;
 
 	
@@ -142,6 +141,7 @@ h3{
 header {
 	margin-bottom:$spacingSmall;
 	display: flex;
+
 	flex-direction:column;
 	justify-content: center;
 	padding:1rem 0rem;
@@ -272,11 +272,13 @@ input::placeholder{
 
 .submitContainer{
 	display:flex;
-	justify-content: center;
+	justify-content: center
+	
 }
 .results {
 	position: relative;
 	width: 100%;
+	
 	background-color: $colorLight;
 	// border: 4px solid $colorAccent;
 	// margin-bottom:$spacingBig;
@@ -305,12 +307,7 @@ input::placeholder{
 input:-webkit-autofill {
     box-shadow: 0 0 0px 1000px $colorAccent inset !important;
 }
-footer {
-	display:flex;
-	justify-content: center;
-	padding:$spacingSmall 0;
-	color:$colorDark;
-	}
+
 
 
 .copyright {
@@ -355,7 +352,18 @@ footer {
 	opacity: 1;
   }
 }
+footer, header {
+	height:20vh;
+	background: linear-gradient(rgba(243,244,233, 0.8), rgba(77, 77, 77, 0.2)),
+                rgba(243,244,233, .6) url('http://i.imgur.com/OxYRdWw.png') repeat center fixed;
 
+	display:flex;
+	justify-content: center;
+	padding:50px;
+	margin:0 auto;
+	color:$colorDark;
+	}
+            
 // @keyframes blink {
 //   0%{
 // 	opacity: 1;

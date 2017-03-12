@@ -142,23 +142,38 @@ citybikes.getBikeNetworksStations = function(city){
 // 	})
 // };
 
-citybikes.getCoffeeShops = function(location) {
+citybikes.getCoffeeShops = function(location, coffee) {
 	// var cafe = {lat: 43.6657, lng: -79.3855}
-
+console.log("hey", location);
 	return $.ajax({
-		url: 'https://api.foursquare.com/v2/venues/explore',
+		url: 'http://proxy.hackeryou.com',
 		method: 'GET',
-		dataType: 'json',
+		dataType: 'jsonp',
+
 		data: {
-			near: location,
-			radius: 500,
-			v: 20170310,
+			reqUrl:'https://api.foursquare.com/v2/venues/explore',
+			params: {
+			
 			client_id: 'HNQJUKZ0TNYSMRZ2N2CNAUZZFQFDJVIBBB0BZ3RG2XAJD43G',
 			client_secret: 'HZKPB3D5EANIS5PHQK5ZYLRQFDVE04CQ5KBSUZTK5UCT3JH2',
-			section: 'coffee',
-		}
+
+			v: 20170310,
+
+			near: location,
+			query: coffee,
+			limit:10,
+		
+	}
+			
+				}
+			
+				
+			
+		
+		
 	});
 };
+
 
 citybikes.coffeeShops = citybikes.getCoffeeShops();
 

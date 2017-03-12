@@ -100,7 +100,7 @@ citybikes.getBikeNetworksStations = function(city){
 		// console.log("RESULT",result);
 		citybikes.bikeStations = result.network.stations; //latitude and longitude are accessible from this point
 		// console.log(citybikes.bikeStations);
-		initMap();
+		citybikes.initMap();
 	})
 };
 
@@ -125,9 +125,10 @@ citybikes.getCoffeeShops = function(coffee) {
 	});
 };
 
-var map;
-function initMap() {
-    // console.log('initmap');
+
+citybikes.initMap = function() {
+	var map;
+    console.log('initmap');
     citybikes.myLatLong = {lat: citybikes.bikeLat, lng: citybikes.bikeLng};
     citybikes.cafeLatLong = {lat: citybikes.cafeLat, lng: citybikes.cafeLng};
 	// Two Maps Attempt

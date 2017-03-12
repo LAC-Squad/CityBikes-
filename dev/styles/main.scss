@@ -82,7 +82,7 @@ main {
 	background:$colorLight;
 	justify-content: center;
 	flex-direction:column;
-	width:100%;
+	width:80%;
 }
 .steps {
 	text-align: center;
@@ -386,6 +386,12 @@ footer {
 	padding:1rem;
 	border-right:1px dashed $colorDark;
 	border-left:1px dashed $colorDark;
+
+	button {
+		background:transparent;
+		border:1px solid transparent;
+		border-radius:50%;
+	}
 
 }
  li {

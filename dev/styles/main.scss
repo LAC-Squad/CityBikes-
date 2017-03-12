@@ -1,9 +1,7 @@
 
 @import 'setup';
 @import 'variables';
-@import 'medques';
-// @import 'medques';
-
+// media queries need to be at the bottom
 @import url('https://fonts.googleapis.com/css?family=Montserrat|Roboto');
 
 body {
@@ -361,3 +359,5 @@ footer {
 
 
   
+// this needs to be at the bottom so that these run after our css
+@import 'medques';

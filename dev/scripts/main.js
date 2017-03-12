@@ -190,8 +190,9 @@ function initMap() {
 	        	lng:item.longitude
 	        },
 	        map: mapBike,
-	        title: citybikes.userInputBike,
+	        title: item.name,
 	        icon: 'icons/bikeMarker.svg'
+
 	    });
 	});
 

@@ -7,11 +7,12 @@
 body {
 	margin: 0 auto; 
 	font-family: 'Roboto', sans-serif; 
-	background: $colorLight;
+	background:$colorLight;
 	height:100%;
+	text-transform: lowercase;
 }
 button,input, a{
-	transition:0.3s;
+	transition:0.9s;
 }
 .wrapBorder {
 	width:100%;
@@ -35,6 +36,10 @@ button,input, a{
 			color:$colorLight;
 		}
 	}
+}
+main {
+	
+
 }
 i {
 	transition: all 0.3s ease;
@@ -88,8 +93,10 @@ svg {
 }
 .wrapper {
     margin: 0 auto;
+    height:100vh;
     max-width: 1400px;
     padding:$spacingSmall;
+    background: url('http://i.imgur.com/9QLtYYK.png') repeat center fixed;  
 }  
 h1, h2, h3 {
 	text-align:center;
@@ -100,7 +107,7 @@ h1, h2, h3 {
 }
 h1 {
 	margin: 1rem 0 0.75rem 0;
-	font-size:7.7rem;
+	font-size:6.7rem;
 	letter-spacing: 4px;
 	a{
 		text-decoration: none;
@@ -125,9 +132,9 @@ h3{
 	margin-top:0;
 }
 header {
-	margin-bottom:$spacingBig;
+	
 	display: flex;
-	background: $background;
+	background: $colorLight;
 	flex-direction:column;
 	justify-content: center;
 	padding:1rem 0rem;
@@ -170,6 +177,8 @@ button {
   margin: 100px auto 0 auto;
   padding: 20px;
   background: #000;
+
+
   border: 1px solid #1a1a1a;
 }
 .inputContainer {
@@ -198,18 +207,18 @@ button {
 	font-weight:700;
 }
 input::placeholder {
-	color: $colorAccent;
+	color: $colorDark;
 }
 #getBike:focus, #getCafe:focus {
 	color: $colorDark;
 }
 input:hover::placeholder {
-	color: $colorLight;
+	color: $colorDark;
 }
 #getBike, #getCafe {
 	margin-right:$spacingSmall;
 	flex-grow:1;
-	background-color: $colorLight;
+	background-color: $colorAccent;
 	border:3px solid $colorAccent;
 	color: $colorDark;
 
@@ -220,8 +229,7 @@ input:hover::placeholder {
 }
 #go {
 	background-color: $colorAccent;
-	color: $colorLight;
-	color: $colorLight;	
+	color: $colorDark;	
 	&:hover {
 		cursor:pointer;
 		background-color:lighten($colorDark, 7%);
@@ -326,7 +334,7 @@ footer {
 	// position:absolute;
 	// bottom:0;left:0;right:0;
 	height:15vh;
-	background:$background;
+	background:$colorLight;
 	padding:1rem 0rem;
 	display:flex;
 	justify-content: center;

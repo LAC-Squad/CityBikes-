@@ -82,7 +82,8 @@ main {
 	background:$colorLight;
 	justify-content: center;
 	flex-direction:column;
-	width:80%;
+	width:90%;
+	margin:0 auto;
 }
 .steps {
 	text-align: center;
@@ -105,7 +106,7 @@ svg {
     margin: 0 auto;
     max-width: 1200px;
     padding:$spacingSmall;
-    background: linear-gradient(rgba(244,244,233,0.6),rgba(244,244,233,0.6)), url('../../icons/grid1.png') repeat center fixed;  
+    background: linear-gradient(rgba(244,244,233,0.6),rgba(244,244,233,0.6)), url('../../icons/grid1.png') no-repeat center fixed;  
 }  
 h1, h2, h3 {
 	text-align:center;

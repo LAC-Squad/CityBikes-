@@ -12,7 +12,7 @@
 
 $('.tweetMe').on('click', function(){
 
-  var customMessage = "New to town? Visiting? Rent a bike and find a local coffee shop at http://www.bikesandbeans.website";
+  var customMessage = "New to town? Visiting? Rent a bike and find a local coffee shop at http://www.bikesandbeans.website %23crushedit";
   window.open("http://twitter.com/intent/tweet?text=" + customMessage, "twitterwindow", "height=450, width=550, toolbar=0, location=0, menubar=0, directories=0, scrollbars=0");
 
   console.log(customMessage);

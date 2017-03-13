@@ -52,6 +52,7 @@
 
 /* Landscape phone to portrait tablet */
 @media (max-width: 760px) {
+
 	.twoMaps{
 		flex-direction:column;
 		#mapBike, #mapCafe{
@@ -65,6 +66,9 @@
 /* Landscape phones and down */
 @media (max-width: 480px) {
 	header{
+		h1, h3{
+			padding-left:0rem;
+		}
 		h1{
 			font-size:6rem;
 			margin-bottom:$spacingSmall;

@@ -81,7 +81,7 @@ svg {
 .instructionWrapper {
 	display:flex;
 	border:1px solid $colorDark;
-	background:$colorLight;
+	background: rgba(243, 244, 233, 0.8);
 	justify-content: center;
 	flex-direction:column;
 	letter-spacing: 3px;
@@ -233,6 +233,7 @@ input::placeholder {
 }
 #getBike:focus, #getCafe:focus {
 	color: $colorDark;
+	background-color: $colorLight;
 
 }
 input:hover::placeholder {
@@ -252,7 +253,6 @@ input:focus::placeholder {
 	background-color: $colorAccent;
 	border:3px dashed transparent;
 	letter-spacing:4px;
-
 	color: $colorDark;
 
 	&:hover {
@@ -264,15 +264,14 @@ input:focus::placeholder {
 	background-color: $colorAccent;
 	color: $colorDark;
 	border-bottom:4px dotted $colorDark;
-
 	text-transform: lowercase;	
 	letter-spacing:4px;
 
 	.fa {
-padding:0;
-margin:0;
-font-size:10px;
-color: $colorDark;
+		padding:0;
+		margin:0;
+		font-size:10px;
+		color: $colorDark;
 	}
 
 	&:hover {
@@ -313,7 +312,6 @@ color: $colorDark;
 	margin-bottom:$spacingBig;
 	img{
 		max-width:100%;
-
 	}
 }
 .mapOverlay {
@@ -400,6 +398,7 @@ footer {
 	// padding:1rem 0rem;
 	margin:0 auto;
 	color:$colorDark;
+	letter-spacing: 2px;
 }
             
 // @keyframes blink {
@@ -458,11 +457,8 @@ i {
 		background: $colorDark;
 	}
 	&:before{
-
 		margin:auto;
 	}
-
-
 }
 
 .halfMap{
